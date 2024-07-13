@@ -8,14 +8,16 @@ import { HiOfficeBuilding } from 'react-icons/hi';
 import { MdMenu } from 'react-icons/md';
 import { SiOpenaccess } from 'react-icons/si';
 
+import { usePathname } from 'next/navigation';
 import HamburgerButton from './HamburgerButton';
 
 const Sidebar = () => {
   const [open, setOpen] = useState(true);
   const [mobileMenu, setMobileMenu] = useState(false);
+  const pathname = usePathname();
 
   const Menus = [
-    { title: 'Dashboard', path: '/dashboard', src: <FaHome /> },
+    { title: 'Dashboard', path: '/', src: <FaHome /> },
     { title: 'Estabelecimentos', path: '/establishment', src: <HiOfficeBuilding /> },
     { title: 'Clientes Parceiros', path: '/key-clients', src: <FaUsers /> },
     {
@@ -44,7 +46,7 @@ const Sidebar = () => {
             <Link href={menu.path} key={index}>
               <li
                 className={`flex items-center gap-x-6 p-3 text-base font-normal rounded-lg cursor-pointer dark:text-white hover:border-l-4 hover:border-l-blue-300
-                        ${menu.gap ? 'mt-9' : 'mt-2'} ${location.pathname === menu.path && 'bg-gray-200'}`}
+                        ${menu.gap ? 'mt-9' : 'mt-2'} ${pathname === menu.path && 'bg-blue-200 text-blue-400'}`}
               >
                 <span className="text-2xl">{menu.src}</span>
                 <span className={`${!open && 'hidden'} origin-left duration-300 hover:block`}>{menu.title}</span>
@@ -67,7 +69,7 @@ const Sidebar = () => {
             <Link href={menu.path} key={index} onClick={() => setMobileMenu(false)}>
               <span
                 className={` ${
-                  location.pathname === menu.path && 'bg-gray-200 dark:bg-gray-700'
+                  pathname === menu.path && 'bg-gray-200 dark:bg-gray-700'
                 } p-2 rounded-xl hover:bg-gray-200 dark:hover:bg-gray-700`}
               >
                 {menu.title}
