@@ -2,14 +2,10 @@
 
 const Navbar = ({ title }: { title: string }) => {
   return (
-    <nav className="bg-white border-gray-200 rounded shadow">
-      <div className="container flex justify-between items-center mx-auto pt-3">
-        <div className="flex items-center mx-auto">
-          <span className="text-xl font-medium whitespace-nowrap dark:text-white">{title}</span>
-        </div>
-        <div className="flex">
-          <span>teste</span>
-        </div>
+    <nav className="bg-white border-gray-200 rounded shadow pb-6">
+      <div className="container flex justify-between items-center mx-auto ml-8">
+        <div className="flex"></div>
+        <div className="flex pt-5 flex-row items-center gap-4 mr-4 ml-auto pr-4 pl-4 rounded bg-slate-100 dark:bg-slate-700 dark:text-white "></div>
       </div>
     </nav>
   );
