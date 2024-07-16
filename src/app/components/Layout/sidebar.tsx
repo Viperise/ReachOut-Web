@@ -17,7 +17,7 @@ const Sidebar = () => {
   const pathname = usePathname();
 
   const Menus = [
-    { title: 'Dashboard', path: '/', src: <FaHome /> },
+    { title: 'Dashboard', path: '/dashboard', src: <FaHome /> },
     { title: 'Estabelecimentos', path: '/establishment', src: <HiOfficeBuilding /> },
     { title: 'Clientes Parceiros', path: '/key-clients', src: <FaUsers /> },
     {

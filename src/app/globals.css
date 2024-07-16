@@ -50,3 +50,21 @@ main {
   flex-direction: column;
   flex: 1;
 }
+
+@keyframes gradientAnimation {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.gradient-animation {
+  background-size: 400%;
+
+  -webkit-animation: gradientAnimation 8s ease infinite;
+  -moz-animation: gradientAnimation 8s ease infinite;
+  animation: gradientAnimation 8s ease infinite;
+}
