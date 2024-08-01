@@ -1,7 +1,8 @@
 'use client';
 import { usePathname } from 'next/navigation';
-import Footer from './Footer';
-import Sidebar from './Sidebar';
+import Footer from './footer';
+import Sidebar from './sidebar';
+import Navbar from './navbar';
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const pathname = usePathname();
@@ -10,7 +11,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <div className="flex flex-col min-h-screen">
-      {/* <Navbar title="ReachOut" /> */}
+      
+      <Navbar title="ReachOut" />
+    
       <div className="flex flex-1">
         <Sidebar />
         <main className="ml-4 pt-4 flex-1 flex flex-col">

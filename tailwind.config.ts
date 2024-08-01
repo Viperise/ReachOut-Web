@@ -53,6 +53,10 @@ const config: Config = {
         800: '#991b1b',
         900: '#7f1d1d',
       },
+      purple: {
+        50: '#F4F2FF',
+        100: "#8B83BA",
+      }
     },
   },
   plugins: [],
