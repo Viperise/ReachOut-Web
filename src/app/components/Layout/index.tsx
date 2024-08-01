@@ -1,7 +1,7 @@
 'use client';
 import { usePathname } from 'next/navigation';
-import Footer from './Footer';
-import Sidebar from './Sidebar';
+import Footer from './footer';
+import Sidebar from './sidebar';
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const pathname = usePathname();
