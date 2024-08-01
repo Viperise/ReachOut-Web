@@ -1,8 +1,13 @@
 'use client';
+import { usePathname } from 'next/navigation';
 import Footer from './Footer';
 import Sidebar from './Sidebar';
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
+  const pathname = usePathname();
+
+  if (pathname === '/login') return <>{children}</>;
+
   return (
     <div className="flex flex-col min-h-screen">
       {/* <Navbar title="ReachOut" /> */}
