@@ -7,19 +7,17 @@ import PaginationComponent from './paginaton';
 import Link from 'next/link';
 import { Tooltip as ReactTooltip } from 'react-tooltip';
 import 'react-tooltip/dist/react-tooltip.css';
+import useEstablishment from '@app/app/hook/establishments';
 
 const EstablishmentTable = () => {
-  const itemsPerPage = 5;
-  const [currentPage, setCurrentPage] = useState(1);
-
-  const handlePageChange = (page: number) => {
-    setCurrentPage(page);
-  };
-
-  const paginatedData = Establishment.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
-  );
+    const {
+        setItemsPerPage,
+        handlePageChange,
+        paginatedData,
+        currentPage,
+        setCurrentPage,
+        itemsPerPage
+    } = useEstablishment();
 
   return (
     <div className='w-full'>
@@ -88,6 +86,7 @@ const EstablishmentTable = () => {
         itemsPerPage={itemsPerPage}
         onPageChange={handlePageChange}
         currentPage={currentPage}
+        setItemsPerPage={setItemsPerPage}
       />
       <ReactTooltip id="details-tooltip" />
     </div>
