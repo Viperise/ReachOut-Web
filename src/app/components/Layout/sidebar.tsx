@@ -18,7 +18,7 @@ const Sidebar = () => {
 
   const Menus = [
     { title: 'Dashboard', path: '/dashboard', src: <FaHome /> },
-    { title: 'Estabelecimentos', path: '/establishment', src: <HiOfficeBuilding /> },
+    { title: 'Estabelecimentos', path: '/establishments', src: <HiOfficeBuilding /> },
     { title: 'Clientes Parceiros', path: '/key-clients', src: <FaUsers /> },
     {
       title: 'Anúncios',

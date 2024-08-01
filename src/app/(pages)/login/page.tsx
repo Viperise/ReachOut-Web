@@ -1,65 +1,66 @@
 'use client';
 import Image from 'next/image';
 import { FormEvent, useState } from 'react';
-
-import { AuthService } from '@app/base/services/authentication/login.service';
+import { useRouter } from 'next/navigation'; // Import useRouter
+import { AuthService } from '@app/base/services/authentication/loginMocked.service';
 import ViperiseLogo from './../../../base/assets/static/viperise-login-static.svg';
+import ReachOutLogo from './../../../../public/assets/imgs/Component 1.svg'
+import Leftside from './components/leftside';
+
+const authService = new AuthService();
 
 const LoginPage = () => {
   const [isLoginError, setLoginError] = useState<boolean>(false);
   const [isLoading, setLoading] = useState<boolean>(false);
-  const AuthServiceFunction = new AuthService();
+  const router = useRouter(); // Initialize router
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setLoading(true);
+    setLoginError(false);
 
     const formData = new FormData(event.currentTarget);
-    const email = formData.get('email');
-    const password = formData.get('password');
+    const email = formData.get('email') as string;
+    const password = formData.get('password') as string;
 
-    AuthServiceFunction.login(email as string, password as string)
-      .then(() => setLoading(false))
-      .catch(() => {
-        setLoginError(true);
-        setLoading(false);
-      });
+    try {
+      await authService.login(email, password);
+      setLoading(false);
+      router.push('/'); // Redirect to dashboard after successful login
+    } catch (error) {
+      setLoginError(true);
+      setLoading(false);
+    }
   }
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-l from-blue-100 via-blue-200 to-blue-300 p-4 sm:p-6 md:p-8 lg:p-12 gradient-animation">
-      <div className="flex flex-col items-center mb-8">
-        <p className="text-md font-bold text-center text-blue-800">Sistema de Gerenciamento de Anúncios</p>
-        <h3 className="text-3xl font-bold text-center text-blue-800 md:text-4xl lg:text-5xl xl:text-6xl">ReachOut</h3>
-      </div>
-      <div className="flex flex-col md:flex-row justify-center items-center w-full md:w-3/4 lg:w-2/3 xl:w-1/2">
-        <div className="w-full md:w-1/2 flex justify-center items-center p-2 md:p-4">
-          <Image
-            src="https://media.discordapp.net/attachments/1168880710564716574/1262829942140436583/loginBG01.png?ex=66980588&is=6696b408&hm=3d30e9f53b42bf7da6e5582854e5090b3b550a0ebd508a0616e2e7faa1a537b7&=&format=webp&quality=lossless&width=676&height=676"
-            alt="Logo"
-            width={430}
-            height={420}
-            className="w-full h-full object-cover rounded"
-          />
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-0 p-4 sm:p-6 md:p-8 lg:p-12 gradient-animation">
+      <div className="flex justify-center items-center w-full">
+        <div className="hidden lg:flex w-full justify-center items-center p-2">
+          <Leftside/>
         </div>
-        <div className="w-full md:w-1/2 bg-gray-0 shadow-md rounded px-8 pt-8 pb-8 mb-4 md:rounded-r-lg h-auto md:h-[450px]">
-          <div className="w-full flex flex-col items-center">
-            <h2 className="text-2xl font-bold mb-4 text-center text-blue-300 pt-6">Autenticação</h2>
-            <form onSubmit={handleSubmit} className="w-full px-8">
+        <div className="w-full">
+          <div className="w-full flex flex-col items-center gap-16">
+            <Image src={ReachOutLogo} alt="Viperise Logo" width={250} height={250} className="object-cover rounded" />
+            <form onSubmit={handleSubmit} className="w-full">
+              <h2 className="text-2xl font-bold mb-4 text-center text-blue-300 pt-6">ENTRAR</h2>
               <label htmlFor="email" className="text-sm font-semibold text-gray-700">
                 Email:
               </label>
               <input
                 type="email"
-                className="w-full border border-gray-300 p-2 rounded-md mb-4"
+                name="email"
+                className="w-full border border-gray-300 px-2 py-3 rounded-md mb-4 focus:outline-blue-300"
                 placeholder="Insira seu Email..."
+                required
               />
               <label htmlFor="password" className="text-sm font-semibold text-gray-700">
                 Senha:
               </label>
               <input
                 type="password"
-                className="w-full border border-gray-300 p-2 rounded-md mb-4"
+                name="password"
+                className="w-full border border-gray-300 px-2 py-3 rounded-md mb-4 focus:outline-blue-300"
                 placeholder="Insira sua Senha..."
                 autoComplete="current-password"
                 required
@@ -112,12 +113,13 @@ const LoginPage = () => {
                 Entrar
               </button>
             </form>
+            <div className="">
+              <Image src={ViperiseLogo} alt="Viperise Logo" width={200} height={200} className="object-cover rounded" />
+            </div>
           </div>
         </div>
       </div>
-      <div className="mt-4">
-        <Image src={ViperiseLogo} alt="Viperise Logo" width={200} height={200} className="object-cover rounded" />
-      </div>
+      
     </div>
   );
 };
