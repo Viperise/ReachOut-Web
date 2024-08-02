@@ -1,13 +1,12 @@
 "use client";
 import { Box } from "@app/app/components";
 import { HiFilter } from "react-icons/hi";
-import Establishmenttable from "./components/establishmenttable";
-import SearchBar from "./components/searchbar";
 import { useState } from "react";
+import SearchBar from "./components/searchBar";
+import TableCustom from "./components/tableEstablishment";
 
 const EstablishmentsPage = () => {
   const [searchTerm, setSearchTerm] = useState<string>('');
-
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);
   };
@@ -33,7 +32,7 @@ const EstablishmentsPage = () => {
             </div>
             <button className="bg-blue-300 px-3 py-2 text-gray-0 rounded-lg">Adicionar</button>
           </div>
-          <Establishmenttable/>
+          <TableCustom/>
         </Box>
       </div>
     </div>

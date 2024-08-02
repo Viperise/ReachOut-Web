@@ -1,7 +1,7 @@
 // src/components/PaginationComponent.tsx
 import React from 'react';
 import { Pagination } from 'react-bootstrap';
-import SelectItemsPerPage from './selectitems';
+import SelectItemsPerPage from './selectItems';
 
 interface PaginationComponentProps {
   totalItems: number;
@@ -24,7 +24,7 @@ const PaginationComponent = ({ totalItems, itemsPerPage, onPageChange, currentPa
 
   return (
     <div className='flex justify-end gap-20 pr-5 text-purple-100 py-2 font-semibold text-sm bg-purple-50 rounded-b-xl'>
-      <div>
+      <div className='flex gap-1 items-center'>
         <p>Itens por página</p>
         <SelectItemsPerPage itemsPerPage={itemsPerPage} setItemsPerPage={setItemsPerPage} />
       </div>

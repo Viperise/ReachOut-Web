@@ -6,7 +6,7 @@ interface SelectItemsPerPageProps {
 }
 
 const SelectItemsPerPage: React.FC<SelectItemsPerPageProps> = ({ itemsPerPage, setItemsPerPage }) => {
-  const options = [5, 10, 15, 20];
+  const options = [5, 10, 15, 20]
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setItemsPerPage(Number(event.target.value));
