@@ -1,5 +1,5 @@
 import { ICONS } from '@app/utils/constants/icons';
-import { navItems } from '@app/utils/constants/navItems';
+import { navItems, sideBarItems } from '@app/utils/constants/navigationItems';
 import {
   Avatar,
   Dropdown,
@@ -25,19 +25,11 @@ const Navbar = () => {
   const router = useRouter();
   const pathname = usePathname();
 
-  const currentNavItem = navItems.find((item) => item.path === pathname);
+  const currentNavItem = sideBarItems.find((item) => item.path === pathname);
   const currentTitle = currentNavItem ? currentNavItem.title : 'Home';
 
-  const items = [
-    {
-      key: 'logout',
-      label: 'Logout',
-      onClick: () => router.push('/login'),
-    },
-  ];
-
   return (
-    <NextNavbar onMenuOpenChange={setIsMenuOpen}>
+    <NextNavbar isBordered onMenuOpenChange={setIsMenuOpen}>
       <NavbarContent>
         <NavbarMenuToggle
           aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
@@ -46,7 +38,7 @@ const Navbar = () => {
         />
 
         <NavbarBrand>
-          <p>{currentTitle}</p>
+          <p className="text-[1.5rem] font-semibold text-primary-500">{currentTitle}</p>
         </NavbarBrand>
 
         <NavbarItem>
@@ -55,12 +47,12 @@ const Navbar = () => {
               <Avatar src="https://picsum.photos/200" className="cursor-pointer" size="md" />
             </DropdownTrigger>
             <DropdownMenu aria-label="Dynamic Actions">
-              {items.map(({ key, label, onClick }) => (
+              {navItems.map(({ key, label, path }) => (
                 <DropdownItem
                   key={key}
                   color={key === 'logout' ? 'danger' : 'default'}
                   className={classNames({ 'text-danger': key === 'logout' })}
-                  onClick={onClick}
+                  onClick={() => router.push(path)}
                 >
                   {label}
                 </DropdownItem>
@@ -70,10 +62,10 @@ const Navbar = () => {
         </NavbarItem>
       </NavbarContent>
       <NavbarMenu>
-        {navItems.map(({ title, path }, index) => (
+        {sideBarItems.map(({ title, path }, index) => (
           <NavbarMenuItem key={index}>
             <Link
-              className={classNames('w-full mt-8 text-black', pathname === path && 'text-red-800')}
+              className={classNames('w-full mt-8 text-black text-lg', pathname === path && 'text-primary-500')}
               href={path}
               size="lg"
               aria-current={pathname === path ? 'page' : undefined}

@@ -13,9 +13,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     <div className="flex flex-col h-screen">
       <div className="flex flex-1">
         <Sidebar />
-        <main className="py-4 flex-1 flex flex-col gap-2">
+        <main className="flex-1 flex flex-col">
           <Navbar />
-          <div className="flex-1 mx-4">{children}</div>
+          <div className="flex-1 p-2">{children}</div>
           <Footer />
         </main>
       </div>

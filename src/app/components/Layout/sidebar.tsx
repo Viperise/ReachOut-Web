@@ -1,6 +1,6 @@
 'use client';
 
-import { navItems } from '@app/utils/constants/navItems';
+import { sideBarItems } from '@app/utils/constants/navigationItems';
 import { colors } from '@nextui-org/react';
 import classNames from 'classnames';
 import Link from 'next/link';
@@ -17,23 +17,21 @@ const Sidebar = () => {
           backgroundColor: colors.white,
         },
       }}
-      className="h-full flex-col bg-white hidden sm:block"
+      className="h-full flex-col hidden sm:block"
     >
-      <div className="flex items-center justify-start p-4">
-        <p className="text-lg">
-          Reach<strong className="text-red-800">Out</strong>
+      <div className="flex items-center justify-center p-4">
+        <p className="text-[1.2rem] font-semibold">
+          Reach<strong className="text-primary-500">Out</strong>
         </p>
       </div>
       <Menu>
-        {navItems.map(({ title, path, icon: Icon }, index) => (
+        {sideBarItems.map(({ title, path, icon: Icon }, index) => (
           <MenuItem
             key={index}
             icon={<Icon />}
             className={classNames(
               'rounded-l-[0.1rem] border-solid',
-              pathname === path
-                ? 'border-l-[0.3rem] border-l-red-800 text-red-800'
-                : 'border-l-transparent text-[#595959]',
+              pathname === path ? 'border-l-[0.3rem] border-l-primary-500 text-primary-500' : 'border-l-transparent',
             )}
             component={<Link href={path} />}
             aria-current={pathname === path ? 'page' : undefined}

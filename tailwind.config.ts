@@ -14,7 +14,7 @@ export default {
     colors: {},
   },
   darkMode: 'class',
-  plugins: [nextui({ addCommonColors: true })],
+  plugins: [nextui()],
   variants: {
     extend: {
       display: ['focus-group'],
