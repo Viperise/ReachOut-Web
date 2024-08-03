@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import Layout from './components/Layout';
 import './globals.css';
+import { Providers } from './providers';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -17,8 +18,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className="font-sans">
       <link rel="icon" href="/assets/static/favicon.ico" sizes="any" />
 
-      <body className={inter.className}>
-        <Layout>{children}</Layout>
+      <body className={`${inter.className}`}>
+        <Providers>
+          <Layout>{children}</Layout>
+        </Providers>
       </body>
     </html>
   );
