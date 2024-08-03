@@ -1,9 +1,11 @@
-import { loadIcon } from '../helpers/loadIcon';
+import { CiMenuBurger } from 'react-icons/ci';
+import { FaAd, FaBuilding, FaHome, FaSignOutAlt, FaUsers } from 'react-icons/fa';
 
 export const ICONS = {
-  home: loadIcon('fa', 'FaHome'),
-  office: loadIcon('hi', 'HiOfficeBuilding'),
-  users: loadIcon('fa', 'FaUsers'),
-  ads: loadIcon('fa', 'FaBuysellads'),
-  access: loadIcon('si', 'SiOpenaccess'),
+  home: FaHome,
+  office: FaBuilding,
+  users: FaUsers,
+  ads: FaAd,
+  access: FaSignOutAlt,
+  menu: CiMenuBurger,
 };
