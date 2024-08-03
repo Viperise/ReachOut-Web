@@ -26,31 +26,6 @@ body {
   background: #555;
 }
 
-html,
-body,
-#__next {
-  height: 100%;
-  margin: 0;
-}
-
-body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-#__next {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
-main {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
 @keyframes gradientAnimation {
   0%,
   100% {

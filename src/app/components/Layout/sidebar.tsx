@@ -17,18 +17,18 @@ const Sidebar = () => {
       </div>
       <div>
         <Menu>
-          {navItems.map((menu, index) => (
+          {navItems.map((item, index) => (
             <MenuItem
               key={index}
-              icon={<menu.icon />}
+              icon={<item.icon />}
               className={`rounded-l-[0.1rem] ${
-                pathname === menu.path
+                pathname === item.path
                   ? 'border-l-[0.3rem] border-l-blue-400 text-blue-400'
                   : 'border-l-transparent text-gray-700 hover:text-white'
-              } border-solid ${menu.gap ? 'mt-auto' : ''}`}
-              component={<Link href={menu.path} />}
+              } border-solid`}
+              component={<Link href={item.path} />}
             >
-              {menu.title}
+              {item.title}
             </MenuItem>
           ))}
         </Menu>

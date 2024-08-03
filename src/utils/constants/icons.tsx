@@ -1,11 +1,9 @@
-import { FaBuysellads, FaHome, FaUsers } from 'react-icons/fa';
-import { HiOfficeBuilding } from 'react-icons/hi';
-import { SiOpenaccess } from 'react-icons/si';
+import { loadIcon } from '../helpers/loadIcon';
 
 export const ICONS = {
-  home: FaHome,
-  office: HiOfficeBuilding,
-  users: FaUsers,
-  ads: FaBuysellads,
-  access: SiOpenaccess,
+  home: loadIcon('fa', 'FaHome'),
+  office: loadIcon('hi', 'HiOfficeBuilding'),
+  users: loadIcon('fa', 'FaUsers'),
+  ads: loadIcon('fa', 'FaBuysellads'),
+  access: loadIcon('si', 'SiOpenaccess'),
 };
