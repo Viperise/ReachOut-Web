@@ -3,44 +3,55 @@
 import { sideBarItems } from '@app/utils/constants/navigationItems';
 import { colors } from '@nextui-org/react';
 import classNames from 'classnames';
+import { useTheme } from 'next-themes';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, MenuItem, Sidebar as ProSidebar, sidebarClasses } from 'react-pro-sidebar';
 
 const Sidebar = () => {
   const pathname = usePathname();
+  const { theme } = useTheme();
 
   return (
-    <ProSidebar
-      rootStyles={{
-        [`.${sidebarClasses.container}`]: {
-          backgroundColor: colors.white,
-        },
-      }}
-      className="h-full flex-col hidden sm:block"
-    >
-      <div className="flex items-center justify-center p-4">
-        <p className="text-[1.2rem] font-semibold">
-          Reach<strong className="text-primary-500">Out</strong>
-        </p>
+    <aside className="min-w-64 py-4 h-full hidden sm:block border-r border-r-default-200">
+      <div className="flex items-center justify-center p-2">
+        <h1 className="text-[1.4rem] font-semibold text-black dark:text-white">
+          Reach<strong className="text-primary-500 dark:text-primary-200">Out</strong>
+        </h1>
       </div>
-      <Menu>
-        {sideBarItems.map(({ title, path, icon: Icon }, index) => (
-          <MenuItem
-            key={index}
-            icon={<Icon />}
-            className={classNames(
-              'rounded-l-[0.1rem] border-solid',
-              pathname === path ? 'border-l-[0.3rem] border-l-primary-500 text-primary-500' : 'border-l-transparent',
-            )}
-            component={<Link href={path} />}
-            aria-current={pathname === path ? 'page' : undefined}
-          >
-            {title}
-          </MenuItem>
-        ))}
-      </Menu>
-    </ProSidebar>
+      <nav className="flex flex-col gap-4">
+        {sideBarItems.map(({ title, path, icon: Icon }) => {
+          const isActive = pathname === path;
+          const activeClasses =
+            'border-l-5 border-l-primary-500 dark:border-l-primary-200 text-primary-500 dark:text-primary-200';
+          const hoverClasses = 'hover:opacity-70 transition-opacity duration-100';
+
+          return (
+            <Link
+              key={path}
+              className={classNames(
+                'rounded-l-sm border-solid p-3',
+                isActive ? activeClasses : 'border-l-transparent',
+                hoverClasses,
+              )}
+              aria-current={isActive ? 'page' : undefined}
+              href={path}
+            >
+              <div className="flex flex-row items-center gap-1 mx-2">
+                <Icon size={20} className={isActive ? 'text-primary-500 dark:text-primary-200' : ''} />
+                <p
+                  className={classNames(
+                    isActive ? 'text-primary-500 dark:text-primary-200' : '',
+                    theme === 'dark' ? colors.black : colors.white,
+                  )}
+                >
+                  {title}
+                </p>
+              </div>
+            </Link>
+          );
+        })}
+      </nav>
+    </aside>
   );
 };
 

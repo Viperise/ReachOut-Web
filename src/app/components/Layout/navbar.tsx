@@ -14,8 +14,10 @@ import {
   NavbarMenu,
   NavbarMenuItem,
   NavbarMenuToggle,
+  Switch,
 } from '@nextui-org/react';
 import classNames from 'classnames';
+import { useTheme } from 'next-themes';
 import { usePathname, useRouter } from 'next/navigation';
 import { useState } from 'react';
 
@@ -28,6 +30,8 @@ const Navbar = () => {
   const currentNavItem = sideBarItems.find((item) => item.path === pathname);
   const currentTitle = currentNavItem ? currentNavItem.title : 'Home';
 
+  const { theme, setTheme } = useTheme();
+
   return (
     <NextNavbar isBordered onMenuOpenChange={setIsMenuOpen}>
       <NavbarContent>
@@ -38,8 +42,21 @@ const Navbar = () => {
         />
 
         <NavbarBrand>
-          <p className="text-[1.5rem] font-semibold text-primary-500">{currentTitle}</p>
+          <p className="text-[1.5rem] font-semibold text-primary-500 dark:text-primary-200">{currentTitle}</p>
         </NavbarBrand>
+
+        <NavbarItem>
+          <Switch
+            checked={theme === 'light'}
+            onChange={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+            color="primary"
+            size="md"
+            aria-label="Toggle dark mode"
+            thumbIcon={({ isSelected, className }) =>
+              isSelected ? <ICONS.moon className={className} /> : <ICONS.sun className={className} />
+            }
+          />
+        </NavbarItem>
 
         <NavbarItem>
           <Dropdown>
