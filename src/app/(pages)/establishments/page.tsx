@@ -2,8 +2,8 @@
 import { Box } from "@app/app/components";
 import { HiFilter } from "react-icons/hi";
 import { useState } from "react";
-import SearchBar from "./components/searchBar";
 import TableCustom from "./components/tableEstablishment";
+import SearchBar from "./components/searchbar";
 
 const EstablishmentsPage = () => {
   const [searchTerm, setSearchTerm] = useState<string>('');

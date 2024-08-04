@@ -1,7 +1,8 @@
 // src/components/PaginationComponent.tsx
 import React from 'react';
 import { Pagination } from 'react-bootstrap';
-import SelectItemsPerPage from './selectItems';
+import SelectItemsPerPage from './selectitems';
+
 
 interface PaginationComponentProps {
   totalItems: number;
