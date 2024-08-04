@@ -1,28 +1,25 @@
-// src/hooks/useEstablishment.ts
 import { Establishment } from "@app/base/mock";
-import { useState } from "react";
+import React from "react";
 
 const useEstablishment = () => {
-  const [itemsPerPage, setItemsPerPage] = useState<number>(5);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [page, setPage] = React.useState(1);
+    const rowsPerPage = 3;
+  
+    const pages = Math.ceil(Establishment.length / rowsPerPage);
+  
+    const Items = React.useMemo(() => {
+      const start = (page - 1) * rowsPerPage;
+      const end = start + rowsPerPage;
+  
+      return Establishment.slice(start, end);
+    }, [page, Establishment]);
 
-  const handlePageChange = (page: number) => {
-    setCurrentPage(page);
-  };
+    return {
+      Items,
+      page,
+      pages,
+      setPage,
+    }
+}
 
-  const paginatedData = Establishment.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
-  );
-
-  return {
-    setItemsPerPage,
-    handlePageChange,
-    paginatedData,
-    currentPage,
-    setCurrentPage,
-    itemsPerPage
-  };
-};
-
-export default useEstablishment;
+export default useEstablishment

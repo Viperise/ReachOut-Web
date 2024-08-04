@@ -3,6 +3,7 @@ import { Box } from "@app/app/components";
 import { HiFilter } from "react-icons/hi";
 import { useState } from "react";
 import SearchBar from "./components/searchbar";
+import TableEstablishment from "./components/tableEstablishment";
 
 const EstablishmentsPage = () => {
   const [searchTerm, setSearchTerm] = useState<string>('');
@@ -31,6 +32,7 @@ const EstablishmentsPage = () => {
             </div>
             <button className="px-3 py-2 text-gray-0 rounded-lg">Adicionar</button>
           </div>
+          <TableEstablishment/>
         </Box>
       </div>
     </div>
