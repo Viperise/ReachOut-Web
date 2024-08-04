@@ -2,7 +2,6 @@
 import { Box } from "@app/app/components";
 import { HiFilter } from "react-icons/hi";
 import { useState } from "react";
-import TableCustom from "./components/tableEstablishment";
 import SearchBar from "./components/searchbar";
 
 const EstablishmentsPage = () => {
@@ -30,9 +29,8 @@ const EstablishmentsPage = () => {
                 />
               </div>
             </div>
-            <button className="bg-blue-300 px-3 py-2 text-gray-0 rounded-lg">Adicionar</button>
+            <button className="px-3 py-2 text-gray-0 rounded-lg">Adicionar</button>
           </div>
-          <TableCustom/>
         </Box>
       </div>
     </div>
