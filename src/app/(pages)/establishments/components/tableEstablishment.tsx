@@ -1,6 +1,5 @@
 import { Establishment } from "@app/base/mock";
 import {
-    Button,
     Table, 
     TableHeader, 
     TableColumn, 
@@ -34,7 +33,7 @@ const TableEstablishment = () => {
                         isCompact
                         showControls
                         showShadow
-                        color="primary"
+                        color="secondary"
                         page={page}
                         total={pages}
                         onChange={(page) => setPage(page)}
