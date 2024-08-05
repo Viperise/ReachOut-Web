@@ -47,8 +47,8 @@ const Navbar = () => {
 
         <NavbarItem>
           <Switch
-            checked={theme === 'light'}
-            onChange={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+            checked={theme === 'purple-theme'}
+            onChange={() => setTheme(theme === 'purple-theme' ? 'dark-purple-theme' : 'purple-theme')}
             color="primary"
             size="md"
             aria-label="Toggle dark mode"
@@ -82,7 +82,7 @@ const Navbar = () => {
         {sideBarItems.map(({ title, path }, index) => (
           <NavbarMenuItem key={index}>
             <Link
-              className={classNames('w-full mt-8 text-black text-lg', pathname === path && 'text-primary-500')}
+              className={classNames('w-full mt-8 text-black text-lg', pathname === path && 'text-primary-600')}
               href={path}
               size="lg"
               aria-current={pathname === path ? 'page' : undefined}
