@@ -24,7 +24,9 @@ const TableEstablishment = () => {
     
     return (
         <div className="flex flex-col gap-1">
-            <Table
+            <Table 
+                radius="none"
+                shadow="sm"
                 aria-label="Example table with client async pagination"
                 bottomContent={
                     pages > 0 ? (
@@ -43,13 +45,13 @@ const TableEstablishment = () => {
                 }
             >
                 <TableHeader>
-                    <TableColumn>{""}</TableColumn>
-                    <TableColumn style={{color:'#8B83BA'}}>NOME</TableColumn>
-                    <TableColumn style={{color:'#8B83BA'}}>ENDEREÇO</TableColumn>
-                    <TableColumn style={{color:'#8B83BA'}}>PROPRIETÁRIO</TableColumn>
-                    <TableColumn className="flex justify-center items-center">
+                    <TableColumn className="text-primary-700 bg-primary-200">{""}</TableColumn>
+                    <TableColumn className="text-primary-700 bg-primary-200">NOME</TableColumn>
+                    <TableColumn className="text-primary-700 bg-primary-200">ENDEREÇO</TableColumn>
+                    <TableColumn className="text-primary-700 bg-primary-200">PROPRIETÁRIO</TableColumn>
+                    <TableColumn className="flex justify-center items-center bg-primary-200">
                         <button>
-                            <IoEllipsisVerticalSharp style={{fontSize: '24px', color: '#8B83BA'}}/>
+                            <IoEllipsisVerticalSharp style={{fontSize: '24px', color: '#494285'}}/>
                         </button>
                     </TableColumn>
                 </TableHeader>
@@ -61,15 +63,15 @@ const TableEstablishment = () => {
                             </TableCell>
                             <TableCell>
                                 <p>{item.firstName}</p>
-                                <p style={{color: '#3366FF'}}>{item.lastName}</p>
+                                <p className="text-info-500">{item.lastName}</p>
                             </TableCell>
                             <TableCell>
                                 <p>{item.firstAddress}</p>
-                                <p style={{color: '#3366FF'}}>{item.lastAddress}</p>
+                                <p className="text-info-500">{item.lastAddress}</p>
                             </TableCell>
                             <TableCell>
                                 <p>{item.owner}</p>
-                                <div className="flex gap-1" style={{color: '#3366FF'}}>
+                                <div className="flex gap-1 text-info-500">
                                     <p>{item.employee}</p>
                                     <p>Funcionários</p>
                                 </div> 
@@ -77,7 +79,7 @@ const TableEstablishment = () => {
                             <TableCell>
                                 <div className="flex justify-center">
                                     <Link href={`/establishments/${item.id}`}>
-                                        <button className="py-2 px-4 border rounded-full" style={{color: '#3366FF'}}>
+                                        <button className="py-2 px-4 border rounded-full text-info-500">
                                             MAIS DETALHES
                                         </button> 
                                     </Link>

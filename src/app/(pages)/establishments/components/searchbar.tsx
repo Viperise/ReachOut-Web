@@ -18,7 +18,7 @@ const SearchBar = ({ placeholder = "Procure pelo Estabelecimento desejado...", o
         placeholder={placeholder}
         onChange={onChange}
         value={value}
-        className="border border-gray-400 rounded-lg py-2 pl-8 pr-3 outline-none text-purple-100 w-full"
+        className="rounded-lg py-2 pl-8 pr-3 outline-none text-purple-100 w-full bg-primary-100"
       />
     </div>
   );
