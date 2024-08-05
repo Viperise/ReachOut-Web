@@ -2,7 +2,7 @@ import AdGrid from "./components/adGrid";
 
 const PostingsPage = () => {
   return (
-    <div className="p-5">
+    <div className="flex p-5 w-full">
       <AdGrid/>
     </div>
 );

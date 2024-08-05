@@ -15,13 +15,15 @@ const AdGrid = () => {
 
     return (
         <div className="flex flex-col gap-20 justify-center w-full">
-            <div className="grid grid-cols-3 gap-y-16 gap-x-6 max-[1300px]:grid-cols-2 max-[920px]:grid-cols-1">
-                {Items.map ((item) =>(
-                    <Grid 
-                    image={item.image} 
-                    place={item.place} 
-                    name={item.name}
-                />
+            <div className="grid grid-cols-3 gap-y-20 gap-10 max-[1300px]:grid-cols-2 max-[920px]:grid-cols-1">
+                {Items.map ((item, index) =>(
+                    <div key={index}>
+                        <Grid 
+                        image={item.image} 
+                        place={item.place} 
+                        name={item.name}
+                        />
+                    </div>
                 ))}
             </div>
             <div className="flex justify-center">
