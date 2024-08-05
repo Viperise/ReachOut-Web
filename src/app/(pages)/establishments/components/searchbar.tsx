@@ -1,5 +1,5 @@
-import { IoSearch } from "react-icons/io5";
 import React from 'react';
+import { ICONS } from "@app/utils/constants/icons";
 
 interface SearchBarProps {
   placeholder?: string;
@@ -11,7 +11,7 @@ const SearchBar = ({ placeholder = "Procure pelo Estabelecimento desejado...", o
   return (
     <div className="relative flex items-center w-full">
       <div className="absolute inset-y-0 left-0 pl-2 flex items-center">
-        <IoSearch style={{ fontSize: '24px', color: '#8B83BA' }} />
+        <ICONS.search style={{ fontSize: '24px', color: '#8B83BA' }} />
       </div>
       <input
         type="text"

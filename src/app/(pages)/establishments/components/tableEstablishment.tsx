@@ -8,11 +8,11 @@ import {
     TableCell,
     Pagination, 
 } from "@nextui-org/react";
-import { IoEllipsisVerticalSharp } from "react-icons/io5";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import useEstablishment from "@app/app/hook/establishments";
+import { ICONS } from "@app/utils/constants/icons";
 
 const TableEstablishment = () => {
     const {
@@ -51,7 +51,7 @@ const TableEstablishment = () => {
                     <TableColumn className="text-primary-700 bg-primary-200">PROPRIETÁRIO</TableColumn>
                     <TableColumn className="flex justify-center items-center bg-primary-200">
                         <button>
-                            <IoEllipsisVerticalSharp style={{fontSize: '24px', color: '#494285'}}/>
+                            <ICONS.threedot style={{fontSize: '24px', color: '#494285'}}/>
                         </button>
                     </TableColumn>
                 </TableHeader>
