@@ -1,3 +1,4 @@
+import { AdGrid } from "../types/adGrid";
 import { EstablishmentTable } from "../types/establishmentTable";
 
 export const Establishment: EstablishmentTable[] = [
@@ -303,3 +304,127 @@ export const Establishment: EstablishmentTable[] = [
     },
     
 ]
+
+export const Adverts: AdGrid[] = [
+    {
+        image: 'https://media.discordapp.net/attachments/1126326046279606353/1270104333085839442/Image.png?ex=66b27c56&is=66b12ad6&hm=355525671a16a104f94012c0212d4e1c9145c0191133c573406e15bf8d67c56a&=&format=webp&quality=lossless',
+        place: 'Maldives',
+        name: 'South Beach'
+    },
+    {
+        image: 'https://media.discordapp.net/attachments/1126326046279606353/1270115460876210206/Overlay.png?ex=66b286b3&is=66b13533&hm=5b2d2e2232af508030c96b49ad312fff9161d9b027cb928e0da818c018ac8fad&=&format=webp&quality=lossless',
+        place: 'Maldives',
+        name: 'South Beach'
+    },
+    {
+        image: 'https://media.discordapp.net/attachments/1126326046279606353/1270115582523609248/Overlay.png?ex=66b286d0&is=66b13550&hm=62cd4082932bf69f14ccece2d8bc3428c1c77f845406353d10eb6658b1874cdc&=&format=webp&quality=lossless',
+        place: 'Maldives',
+        name: 'South Beach'
+    },
+    {
+        image: 'https://media.discordapp.net/attachments/1126326046279606353/1270104333085839442/Image.png?ex=66b27c56&is=66b12ad6&hm=355525671a16a104f94012c0212d4e1c9145c0191133c573406e15bf8d67c56a&=&format=webp&quality=lossless',
+        place: 'Maldives',
+        name: 'South Beach'
+    },
+    {
+        image: 'https://media.discordapp.net/attachments/1126326046279606353/1270104333085839442/Image.png?ex=66b27c56&is=66b12ad6&hm=355525671a16a104f94012c0212d4e1c9145c0191133c573406e15bf8d67c56a&=&format=webp&quality=lossless',
+        place: 'Maldives',
+        name: 'South Beach'
+    },
+    {
+        image: 'https://media.discordapp.net/attachments/1126326046279606353/1270115460876210206/Overlay.png?ex=66b286b3&is=66b13533&hm=5b2d2e2232af508030c96b49ad312fff9161d9b027cb928e0da818c018ac8fad&=&format=webp&quality=lossless',
+        place: 'Maldives',
+        name: 'South Beach'
+    },
+    {
+        image: 'https://media.discordapp.net/attachments/1126326046279606353/1270115582523609248/Overlay.png?ex=66b286d0&is=66b13550&hm=62cd4082932bf69f14ccece2d8bc3428c1c77f845406353d10eb6658b1874cdc&=&format=webp&quality=lossless',
+        place: 'Maldives',
+        name: 'South Beach'
+    },
+    {
+        image: 'https://media.discordapp.net/attachments/1126326046279606353/1270104333085839442/Image.png?ex=66b27c56&is=66b12ad6&hm=355525671a16a104f94012c0212d4e1c9145c0191133c573406e15bf8d67c56a&=&format=webp&quality=lossless',
+        place: 'Maldives',
+        name: 'South Beach'
+    },
+    {
+        image: 'https://media.discordapp.net/attachments/1126326046279606353/1270104333085839442/Image.png?ex=66b27c56&is=66b12ad6&hm=355525671a16a104f94012c0212d4e1c9145c0191133c573406e15bf8d67c56a&=&format=webp&quality=lossless',
+        place: 'Maldives',
+        name: 'South Beach'
+    },
+    {
+        image: 'https://media.discordapp.net/attachments/1126326046279606353/1270115460876210206/Overlay.png?ex=66b286b3&is=66b13533&hm=5b2d2e2232af508030c96b49ad312fff9161d9b027cb928e0da818c018ac8fad&=&format=webp&quality=lossless',
+        place: 'Maldives',
+        name: 'South Beach'
+    },
+    {
+        image: 'https://media.discordapp.net/attachments/1126326046279606353/1270115582523609248/Overlay.png?ex=66b286d0&is=66b13550&hm=62cd4082932bf69f14ccece2d8bc3428c1c77f845406353d10eb6658b1874cdc&=&format=webp&quality=lossless',
+        place: 'Maldives',
+        name: 'South Beach'
+    },
+    {
+        image: 'https://media.discordapp.net/attachments/1126326046279606353/1270104333085839442/Image.png?ex=66b27c56&is=66b12ad6&hm=355525671a16a104f94012c0212d4e1c9145c0191133c573406e15bf8d67c56a&=&format=webp&quality=lossless',
+        place: 'Maldives',
+        name: 'South Beach'
+    },
+    {
+        image: 'https://media.discordapp.net/attachments/1126326046279606353/1270104333085839442/Image.png?ex=66b27c56&is=66b12ad6&hm=355525671a16a104f94012c0212d4e1c9145c0191133c573406e15bf8d67c56a&=&format=webp&quality=lossless',
+        place: 'Maldives',
+        name: 'South Beach'
+    },
+    {
+        image: 'https://media.discordapp.net/attachments/1126326046279606353/1270115460876210206/Overlay.png?ex=66b286b3&is=66b13533&hm=5b2d2e2232af508030c96b49ad312fff9161d9b027cb928e0da818c018ac8fad&=&format=webp&quality=lossless',
+        place: 'Maldives',
+        name: 'South Beach'
+    },
+    {
+        image: 'https://media.discordapp.net/attachments/1126326046279606353/1270115582523609248/Overlay.png?ex=66b286d0&is=66b13550&hm=62cd4082932bf69f14ccece2d8bc3428c1c77f845406353d10eb6658b1874cdc&=&format=webp&quality=lossless',
+        place: 'Maldives',
+        name: 'South Beach'
+    },
+    {
+        image: 'https://media.discordapp.net/attachments/1126326046279606353/1270104333085839442/Image.png?ex=66b27c56&is=66b12ad6&hm=355525671a16a104f94012c0212d4e1c9145c0191133c573406e15bf8d67c56a&=&format=webp&quality=lossless',
+        place: 'Maldives',
+        name: 'South Beach'
+    },
+    {
+        image: 'https://media.discordapp.net/attachments/1126326046279606353/1270104333085839442/Image.png?ex=66b27c56&is=66b12ad6&hm=355525671a16a104f94012c0212d4e1c9145c0191133c573406e15bf8d67c56a&=&format=webp&quality=lossless',
+        place: 'Maldives',
+        name: 'South Beach'
+    },
+    {
+        image: 'https://media.discordapp.net/attachments/1126326046279606353/1270115460876210206/Overlay.png?ex=66b286b3&is=66b13533&hm=5b2d2e2232af508030c96b49ad312fff9161d9b027cb928e0da818c018ac8fad&=&format=webp&quality=lossless',
+        place: 'Maldives',
+        name: 'South Beach'
+    },
+    {
+        image: 'https://media.discordapp.net/attachments/1126326046279606353/1270115582523609248/Overlay.png?ex=66b286d0&is=66b13550&hm=62cd4082932bf69f14ccece2d8bc3428c1c77f845406353d10eb6658b1874cdc&=&format=webp&quality=lossless',
+        place: 'Maldives',
+        name: 'South Beach'
+    },
+    {
+        image: 'https://media.discordapp.net/attachments/1126326046279606353/1270104333085839442/Image.png?ex=66b27c56&is=66b12ad6&hm=355525671a16a104f94012c0212d4e1c9145c0191133c573406e15bf8d67c56a&=&format=webp&quality=lossless',
+        place: 'Maldives',
+        name: 'South Beach'
+    },
+    {
+        image: 'https://media.discordapp.net/attachments/1126326046279606353/1270104333085839442/Image.png?ex=66b27c56&is=66b12ad6&hm=355525671a16a104f94012c0212d4e1c9145c0191133c573406e15bf8d67c56a&=&format=webp&quality=lossless',
+        place: 'Maldives',
+        name: 'South Beach'
+    },
+    {
+        image: 'https://media.discordapp.net/attachments/1126326046279606353/1270115460876210206/Overlay.png?ex=66b286b3&is=66b13533&hm=5b2d2e2232af508030c96b49ad312fff9161d9b027cb928e0da818c018ac8fad&=&format=webp&quality=lossless',
+        place: 'Maldives',
+        name: 'South Beach'
+    },
+    {
+        image: 'https://media.discordapp.net/attachments/1126326046279606353/1270115582523609248/Overlay.png?ex=66b286d0&is=66b13550&hm=62cd4082932bf69f14ccece2d8bc3428c1c77f845406353d10eb6658b1874cdc&=&format=webp&quality=lossless',
+        place: 'Maldives',
+        name: 'South Beach'
+    },
+    {
+        image: 'https://media.discordapp.net/attachments/1126326046279606353/1270104333085839442/Image.png?ex=66b27c56&is=66b12ad6&hm=355525671a16a104f94012c0212d4e1c9145c0191133c573406e15bf8d67c56a&=&format=webp&quality=lossless',
+        place: 'Maldives',
+        name: 'South Beach'
+    },
+    
+];
