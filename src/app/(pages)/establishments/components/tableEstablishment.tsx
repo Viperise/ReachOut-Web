@@ -35,7 +35,7 @@ const TableEstablishment = () => {
                         isCompact
                         showControls
                         showShadow
-                        color="secondary"
+                        color="primary"
                         page={page}
                         total={pages}
                         onChange={(page) => setPage(page)}
