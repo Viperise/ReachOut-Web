@@ -1,4 +1,4 @@
-import { AdGrid } from "../types/adGrid";
+import { AnnouncementGrid } from "../types/announcementGrid";
 import { EstablishmentTable } from "../types/establishmentTable";
 
 export const Establishment: EstablishmentTable[] = [
@@ -305,7 +305,7 @@ export const Establishment: EstablishmentTable[] = [
     
 ]
 
-export const Adverts: AdGrid[] = [
+export const Announcement: AnnouncementGrid[] = [
     {
         image: 'https://media.discordapp.net/attachments/1126326046279606353/1270104333085839442/Image.png?ex=66b27c56&is=66b12ad6&hm=355525671a16a104f94012c0212d4e1c9145c0191133c573406e15bf8d67c56a&=&format=webp&quality=lossless',
         place: 'Maldives',

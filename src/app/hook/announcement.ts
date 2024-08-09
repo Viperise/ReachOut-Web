@@ -1,19 +1,19 @@
 
-import { Adverts } from "@app/base/mock";
+import { Announcement } from "@app/base/mock";
 import React from "react";
 
-const useAdverts = () => {
+const useAnnouncement = () => {
   const [page, setPage] = React.useState(1);
     const rowsPerPage = 9;
   
-    const pages = Math.ceil(Adverts.length / rowsPerPage);
+    const pages = Math.ceil(Announcement.length / rowsPerPage);
   
     const Items = React.useMemo(() => {
       const start = (page - 1) * rowsPerPage;
       const end = start + rowsPerPage;
   
-      return Adverts.slice(start, end);
-    }, [page, Adverts]);
+      return Announcement.slice(start, end);
+    }, [page, Announcement]);
 
     return {
       Items,
@@ -23,4 +23,4 @@ const useAdverts = () => {
     }
 }
 
-export default useAdverts
+export default useAnnouncement

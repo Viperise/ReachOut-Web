@@ -1,4 +1,3 @@
-import { CSSProperties, ReactNode } from "react";
 import Image from "next/image";
 import { ICONS } from "@app/utils/constants/icons";
 

@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-export interface AdGrid {
+export interface AnnouncementGrid {
     image: string;
     place: string;
     name: string;

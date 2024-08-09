@@ -1,17 +1,16 @@
 "use client"
 
 import { Grid } from "@app/app/components";
-import useAdverts from "@app/app/hook/adverts";
-import { Adverts } from "@app/base/mock";
+import useAnnouncement from "@app/app/hook/announcement";
 import { Pagination } from "@nextui-org/react";
 
-const AdGrid = () => {
+const AnnouncementGrid = () => {
     const {
         Items,
         page,
         pages,
         setPage
-    } = useAdverts();
+    } = useAnnouncement();
 
     return (
         <div className="flex flex-col gap-20 justify-center w-full">
@@ -43,4 +42,4 @@ const AdGrid = () => {
     )
 }
 
-export default AdGrid;
+export default AnnouncementGrid;
