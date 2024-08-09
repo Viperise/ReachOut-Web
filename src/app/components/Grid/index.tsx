@@ -1,39 +1,28 @@
-import { CSSProperties, ReactNode } from "react";
-import Image from "next/image";
-import { ICONS } from "@app/utils/constants/icons";
+import { ICONS } from '@app/utils/constants/icons';
+import Image from 'next/image';
 
 interface GridProps {
-    image: string;
-    place: string;
-    name: string;
+  image: string;
+  place: string;
+  name: string;
 }
 
-const Grid = ({image, place, name}: GridProps) => {
-    return (
-        <div>
-            <div className="w-full">
-                <Image 
-                src={image} 
-                alt={"image"}
-                width={550}
-                height={450}
+const Grid = ({ image, place, name }: GridProps) => {
+  return (
+    <div>
+      <div className="w-full">
+        <Image src={image} alt={'image'} width={550} height={450} className="rounded-xl" />
+      </div>
 
-                className="rounded-xl"
-                />
-            </div>
-            
-            <div className="flex flex-col gap-1 -mt-20 px-4 text-primary-foreground">
-                <p className="text-4xl font-semibold">
-                    {name}
-                </p>
-                <div className="flex gap-1">
-                    <ICONS.place />
-                    <p className="-mt-1">{place}</p>
-                </div>
-            </div>
+      <div className="flex flex-col gap-1 -mt-20 px-4 text-primary-foreground">
+        <p className="text-4xl font-semibold">{name}</p>
+        <div className="flex gap-1">
+          <ICONS.place />
+          <p className="-mt-1">{place}</p>
         </div>
-
-    )
-}
+      </div>
+    </div>
+  );
+};
 
 export default Grid;

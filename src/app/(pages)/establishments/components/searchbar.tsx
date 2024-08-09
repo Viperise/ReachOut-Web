@@ -1,5 +1,5 @@
 import React from 'react';
-import { ICONS } from "@app/utils/constants/icons";
+import { ICONS } from '@app/utils/constants/icons';
 
 interface SearchBarProps {
   placeholder?: string;
@@ -7,7 +7,7 @@ interface SearchBarProps {
   value: string;
 }
 
-const SearchBar = ({ placeholder = "Procure pelo Estabelecimento desejado...", onChange, value }: SearchBarProps) => {
+const SearchBar = ({ placeholder = 'Procure pelo Estabelecimento desejado...', onChange, value }: SearchBarProps) => {
   return (
     <div className="relative flex items-center w-full">
       <div className="absolute inset-y-0 left-0 pl-2 flex items-center">

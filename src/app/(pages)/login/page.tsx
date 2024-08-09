@@ -1,10 +1,10 @@
 'use client';
-import Image from 'next/image';
-import { FormEvent, useState } from 'react';
-import { useRouter } from 'next/navigation'; // Import useRouter
 import { AuthService } from '@app/base/services/authentication/loginMocked.service';
+import Image from 'next/image';
+import { useRouter } from 'next/navigation';
+import { FormEvent, useState } from 'react';
+import ReachOutLogo from './../../../../public/assets/imgs/Component 1.svg';
 import ViperiseLogo from './../../../base/assets/static/viperise-login-static.svg';
-import ReachOutLogo from './../../../../public/assets/imgs/Component 1.svg'
 import Leftside from './components/leftside';
 
 const authService = new AuthService();
@@ -26,8 +26,9 @@ const LoginPage = () => {
     try {
       await authService.login(email, password);
       setLoading(false);
-      router.push('/'); // Redirect to dashboard after successful login
+      router.push('/');
     } catch (error) {
+      console.error(error);
       setLoginError(true);
       setLoading(false);
     }
@@ -37,7 +38,7 @@ const LoginPage = () => {
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-0 p-4 sm:p-6 md:p-8 lg:p-12 gradient-animation">
       <div className="flex justify-center items-center w-full">
         <div className="hidden lg:flex w-full justify-center items-center p-2">
-          <Leftside/>
+          <Leftside />
         </div>
         <div className="w-full">
           <div className="w-full flex flex-col items-center gap-16">
@@ -119,7 +120,6 @@ const LoginPage = () => {
           </div>
         </div>
       </div>
-      
     </div>
   );
 };
