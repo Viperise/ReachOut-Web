@@ -1,7 +1,6 @@
 import { ICONS } from '@app/utils/constants/icons';
-import { Chip, User } from '@nextui-org/react';
+import { Chip, Tooltip, User } from '@nextui-org/react';
 import React from 'react';
-import { Tooltip } from 'react-tooltip';
 import { Client, statusColorMap } from '../types';
 
 const renderCell = (
@@ -43,13 +42,19 @@ const renderCell = (
     case 'actions':
       return (
         <div className="relative flex items-center gap-2">
-          <Tooltip content="Detalhes" onClick={() => viewDetails(user.id)}>
-            <span className="text-lg cursor-pointer text-default-400 active:opacity-50">
+          <Tooltip content="Detalhes">
+            <span
+              className="text-lg cursor-pointer text-default-400 active:opacity-50"
+              onClick={() => viewDetails(user.id)}
+            >
               <ICONS.eye />
             </span>
           </Tooltip>
-          <Tooltip content="Editar" onClick={() => editDetails(user.id)}>
-            <span className="text-lg cursor-pointer text-default-400 active:opacity-50">
+          <Tooltip content="Editar">
+            <span
+              className="text-lg cursor-pointer text-default-400 active:opacity-50"
+              onClick={() => editDetails(user.id)}
+            >
               <ICONS.edit />
             </span>
           </Tooltip>
