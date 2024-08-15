@@ -1,10 +1,10 @@
 import { Button, Pagination, SharedSelection } from '@nextui-org/react';
 import React from 'react';
-import { Client } from '../types';
+import { TableEntity } from '../types';
 
 interface BottomContentProps {
   selectedKeys: SharedSelection;
-  filteredItems: Array<Client>;
+  filteredItems: Array<TableEntity>;
   page: number;
   pages: number;
   setPage: (page: number) => void;

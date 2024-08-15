@@ -1,10 +1,11 @@
 'use client';
 import { usePathname } from 'next/navigation';
+import { ReactNode } from 'react';
 import Footer from './footer';
 import Navbar from './navbar';
 import Sidebar from './sidebar';
 
-const Layout = ({ children }: { children: React.ReactNode }) => {
+const Layout = ({ children }: { children: ReactNode }) => {
   const pathname = usePathname();
 
   if (pathname === '/login') return <>{children}</>;

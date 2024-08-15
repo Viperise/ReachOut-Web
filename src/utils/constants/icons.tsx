@@ -9,6 +9,7 @@ import {
   FaPlus,
   FaSearch,
   FaSignOutAlt,
+  FaStar,
   FaTrash,
   FaUsers,
 } from 'react-icons/fa';
@@ -35,4 +36,5 @@ export const ICONS = {
   chevronDown: FaChevronDown,
   plus: FaPlus,
   place: MdOutlinePlace,
+  star: FaStar,
 };

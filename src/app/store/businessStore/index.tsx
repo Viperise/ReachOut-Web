@@ -1,15 +1,15 @@
-import { Client } from '@app/app/(pages)/partners/types';
+import { Business } from '@app/app/(pages)/partners/types';
 import { create } from 'zustand';
 
-type ClientStore = {
-  rows: Client[];
-  setRows: (rows: Client[]) => void;
-  addRow: (row: Client) => void;
+type BusinessStore = {
+  rows: Business[];
+  setRows: (rows: Business[]) => void;
+  addRow: (row: Business) => void;
   removeRow: (id: string) => void;
-  editRow: (updatedRow: Client) => void;
+  editRow: (updatedRow: Business) => void;
 };
 
-export const useClientStore = create<ClientStore>((set) => ({
+export const useBusinessStore = create<BusinessStore>((set) => ({
   rows: [],
   setRows: (rows) => set({ rows }),
   addRow: (row) => set((state) => ({ rows: [...state.rows, row] })),

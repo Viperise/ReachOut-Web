@@ -1,6 +1,6 @@
 'use client';
 
-import { ClientFormData } from '@app/app/(pages)/clients/types';
+import { ClientFormData } from '@app/app/(pages)/partners/types';
 import { Breadcrumbs } from '@app/app/components';
 import { useClientStore } from '@app/app/store/clientStore';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -15,7 +15,6 @@ const schema = Yup.object().shape({
   team: Yup.string().required('Função é obrigatória'),
   status: Yup.string().required('Status é obrigatório'),
   establishment: Yup.string().required('Estabelecimento é obrigatório'),
-  employeesCount: Yup.number().required('Número de funcionários é obrigatório').positive().integer(),
 });
 
 const EditClient = ({ params }: { params: { id: string } }) => {
@@ -34,13 +33,12 @@ const EditClient = ({ params }: { params: { id: string } }) => {
       setValue('team', client.team);
       setValue('status', client.status);
       setValue('establishment', client.establishment);
-      setValue('employeesCount', client.employeesCount);
     }
   }, [client, setValue]);
 
   const onSubmit = (data: ClientFormData) => {
     editRow({ ...client!, ...data });
-    router.push('/clients');
+    router.push('/partners');
   };
 
   if (!client) {
@@ -48,8 +46,8 @@ const EditClient = ({ params }: { params: { id: string } }) => {
   }
 
   const breadcrumbItems = [
-    { name: 'Clientes', href: '/clients' },
-    { name: 'Editar', href: `/clients/${params.id}/edit` },
+    { name: 'Clientes', href: '/partners' },
+    { name: 'Editar', href: `/partners/clients/${params.id}/edit` },
   ];
 
   return (
@@ -62,7 +60,6 @@ const EditClient = ({ params }: { params: { id: string } }) => {
         <Input {...register('team')} label="Função" fullWidth />
         <Input {...register('status')} label="Status" fullWidth />
         <Input {...register('establishment')} label="Estabelecimento" fullWidth />
-        <Input {...register('employeesCount')} type="number" label="Número de Funcionários" fullWidth />
         <Button type="submit">Salvar</Button>
       </form>
     </div>
