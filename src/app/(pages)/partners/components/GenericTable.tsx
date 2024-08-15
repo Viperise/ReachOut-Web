@@ -12,21 +12,27 @@ import {
   TableRow,
 } from '@nextui-org/react';
 import React, { useCallback, useMemo, useState } from 'react';
-import { Client, Column } from '../types';
-import BottomContent from './bottomContent';
-import renderCell from './renderCell';
-import TopContent from './topContent';
+import { Column, TableEntity } from '../types';
+import BottomContent from './BottomContent';
+import renderCell from './RenderCell';
+import TopContent from './TopContent';
 
-interface ClientTableProps {
+interface GenericTableProps<T extends TableEntity> {
   columns: Column[];
-  initialRows: Client[];
+  initialRows: T[];
   removeRow: (id: string) => void;
   viewRow: (id: string) => void;
   editRow: (id: string) => void;
 }
 
-const ClientTable = ({ columns, initialRows, removeRow, viewRow, editRow }: ClientTableProps): React.JSX.Element => {
-  const [rows, setRows] = useState<Client[]>(initialRows);
+const GenericTable = <T extends TableEntity>({
+  columns,
+  initialRows,
+  removeRow,
+  viewRow,
+  editRow,
+}: GenericTableProps<T>): React.JSX.Element => {
+  const [rows, setRows] = useState<T[]>(initialRows);
   const [filterValue, setFilterValue] = useState<string>('');
   const [selectedKeys, setSelectedKeys] = useState<SharedSelection>(new Set());
   const [statusFilter, setStatusFilter] = useState<SharedSelection>('all');
@@ -44,10 +50,10 @@ const ClientTable = ({ columns, initialRows, removeRow, viewRow, editRow }: Clie
     let filteredUsers = [...rows];
 
     if (hasSearchFilter) {
-      filteredUsers = filteredUsers.filter((user) => user.name.toLowerCase().includes(filterValue.toLowerCase()));
+      filteredUsers = filteredUsers.filter((item) => item.name.toLowerCase().includes(filterValue.toLowerCase()));
     }
     if (statusFilter !== 'all' && Array.from(statusFilter).length !== statusOptions.length) {
-      filteredUsers = filteredUsers.filter((user) => Array.from(statusFilter).includes(user.status));
+      filteredUsers = filteredUsers.filter((item) => Array.from(statusFilter).includes(item.status));
     }
 
     return filteredUsers;
@@ -63,9 +69,9 @@ const ClientTable = ({ columns, initialRows, removeRow, viewRow, editRow }: Clie
   }, [page, filteredItems, rowsPerPage]);
 
   const sortedItems = useMemo(() => {
-    return [...items].sort((a: Client, b: Client) => {
-      const first = a[sortDescriptor.column as keyof Client] as number;
-      const second = b[sortDescriptor.column as keyof Client] as number;
+    return [...items].sort((a: T, b: T) => {
+      const first = a[sortDescriptor.column as keyof T] as string | number;
+      const second = b[sortDescriptor.column as keyof T] as string | number;
       const cmp = first < second ? -1 : first > second ? 1 : 0;
 
       return sortDescriptor.direction === 'descending' ? -cmp : cmp;
@@ -149,7 +155,7 @@ const ClientTable = ({ columns, initialRows, removeRow, viewRow, editRow }: Clie
         bottomContentPlacement="outside"
         selectionMode="multiple"
         color="default"
-        aria-label="Clients table"
+        aria-label="Entities table"
         className="w-full"
         selectedKeys={selectedKeys}
         sortDescriptor={sortDescriptor}
@@ -167,7 +173,7 @@ const ClientTable = ({ columns, initialRows, removeRow, viewRow, editRow }: Clie
             </TableColumn>
           )}
         </TableHeader>
-        <TableBody emptyContent={'Sem clientes'} items={sortedItems}>
+        <TableBody emptyContent={'No data available'} items={sortedItems}>
           {(item) => (
             <TableRow key={item.id}>
               {(columnKey) => (
@@ -183,4 +189,4 @@ const ClientTable = ({ columns, initialRows, removeRow, viewRow, editRow }: Clie
   );
 };
 
-export default ClientTable;
+export default GenericTable;

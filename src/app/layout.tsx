@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import { ReactNode } from 'react';
 import Layout from './components/Layout';
 import './globals.css';
 import { Providers } from './providers';
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
   title: 'ReachOut Web - Gerenciamento de Anúncios',
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className="font-sans">
       <link rel="icon" href="/assets/static/favicon.ico" sizes="any" />

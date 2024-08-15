@@ -2,7 +2,7 @@ import { ChipProps } from '@nextui-org/react';
 
 type Column = {
   name: string;
-  uid: keyof Client | 'actions';
+  uid: keyof Client | keyof Business | 'actions';
   sortable?: boolean;
 };
 
@@ -15,8 +15,20 @@ type Client = {
   status: string;
   team: string;
   establishment: string;
-  employeesCount: number;
 };
+
+type Business = {
+  id: string;
+  image: string;
+  name: string;
+  status: string;
+  category: string;
+  establishment: string;
+  employeesCount?: number;
+  socialMedia?: string;
+};
+
+type TableEntity = Client | Business;
 
 export const statusColorMap: Record<string, ChipProps['color']> = {
   ativo: 'success',
@@ -24,4 +36,4 @@ export const statusColorMap: Record<string, ChipProps['color']> = {
   ferias: 'warning',
 };
 
-export type { Client, ClientFormData, Column };
+export type { Business, Client, ClientFormData, Column, TableEntity };

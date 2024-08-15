@@ -9,7 +9,7 @@ import {
   SharedSelection,
 } from '@nextui-org/react';
 import React from 'react';
-import { Client } from '../types';
+import { TableEntity } from '../types';
 
 interface StatusOption {
   uid: string;
@@ -24,7 +24,7 @@ interface TopContentProps {
   statusOptions: StatusOption[];
   setStatusFilter: (keys: SharedSelection) => void;
   onRowsPerPageChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
-  users: Array<Client>;
+  users: Array<TableEntity>;
 }
 const TopContent: React.FC<TopContentProps> = ({
   filterValue,

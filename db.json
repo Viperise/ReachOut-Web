@@ -1,0 +1,43 @@
+{
+  "clients": [
+    {
+      "id": "1",
+      "name": "John Doe",
+      "image": "https://picsum.photos/200",
+      "status": "ativo",
+      "establishment": "5 ativos",
+      "employeesCount": 10,
+      "team": "Dono"
+    },
+    {
+      "id": "2",
+      "name": "Jane Doe",
+      "image": "https://picsum.photos/200",
+      "status": "ativo",
+      "establishment": "10 ativos",
+      "employeesCount": 10,
+      "team": "Atendente"
+    }
+  ],
+  "businesses": [
+    {
+      "id": "1",
+      "name": "Business One",
+      "image": "https://picsum.photos/200",
+      "status": "ativo",
+      "establishment": "5 ativos",
+      "employeesCount": 10,
+      "category": "Dono",
+      "socialMedia": "business_one"
+    },
+    {
+      "id": "3",
+      "name": "Business Three",
+      "image": "https://picsum.photos/200",
+      "status": "pausa",
+      "establishment": "15 ativos",
+      "employeesCount": 10,
+      "category": "Sócio"
+    }
+  ]
+}
