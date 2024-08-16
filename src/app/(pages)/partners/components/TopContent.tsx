@@ -1,4 +1,4 @@
-import { ICONS } from '@app/utils/constants/icons';
+import { ICONS } from '@app/base/constants/icons';
 import {
   Button,
   Dropdown,
@@ -25,6 +25,7 @@ interface TopContentProps {
   setStatusFilter: (keys: SharedSelection) => void;
   onRowsPerPageChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
   users: Array<TableEntity>;
+  onAddNew: () => void;
 }
 const TopContent: React.FC<TopContentProps> = ({
   filterValue,
@@ -35,6 +36,7 @@ const TopContent: React.FC<TopContentProps> = ({
   setStatusFilter,
   onRowsPerPageChange,
   users,
+  onAddNew,
 }) => {
   return (
     <div className="flex flex-col gap-4">
@@ -70,7 +72,7 @@ const TopContent: React.FC<TopContentProps> = ({
               ))}
             </DropdownMenu>
           </Dropdown>
-          <Button color="primary" endContent={<ICONS.plus />}>
+          <Button color="primary" endContent={<ICONS.plus />} onClick={onAddNew}>
             Adicionar Novo
           </Button>
         </div>

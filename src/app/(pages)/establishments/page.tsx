@@ -1,6 +1,6 @@
 'use client';
 import { Box } from '@app/app/components';
-import { ICONS } from '@app/utils/constants/icons';
+import { ICONS } from '@app/base/constants/icons';
 import { useState } from 'react';
 import SearchBar from './components/searchbar';
 import TableEstablishment from './components/tableEstablishment';

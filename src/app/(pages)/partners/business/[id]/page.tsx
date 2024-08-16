@@ -1,14 +1,23 @@
-import { ICONS } from '@app/utils/constants/icons';
+import { ICONS } from '@app/base/constants/icons';
 import { Avatar, Button, Card, CardBody, CardHeader, Chip } from '@nextui-org/react';
-import { Business, statusColorMap } from '../../types';
+import ClientTable from '../../components/ClientsTable';
+import { Business, Client, statusColorMap } from '../../types';
 
 interface BusinessDetailsProps {
   params: { id: string };
 }
 
+async function fetchData(url: string) {
+  const res = await fetch(url, { cache: 'no-store' });
+  if (!res.ok) {
+    throw new Error('Failed to fetch data');
+  }
+  return res.json();
+}
+
 async function fetchBusiness(id: string): Promise<Business | null> {
   try {
-    const response = await fetch(`http://localhost:3001/businesses/${id}`, {
+    const response = await fetch(`http://localhost:3002/businesses/${id}`, {
       cache: 'no-store',
     });
     if (!response.ok) {
@@ -25,13 +34,15 @@ async function fetchBusiness(id: string): Promise<Business | null> {
 const BusinessDetails = async ({ params }: BusinessDetailsProps) => {
   const business = await fetchBusiness(params.id);
 
+  const clients: Client[] = await fetchData('http://localhost:3002/clients');
+
   if (!business) {
     return <p>Business not found</p>;
   }
 
   return (
-    <div className="px-12 py-4">
-      <Card className="max-w-[100vw] shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out">
+    <div className="flex flex-col px-12 py-4 gap-10">
+      <Card className="max-w-[100vw]">
         <CardHeader className="justify-between bg-gray-100 p-4 rounded-t-lg">
           <div className="flex gap-5">
             <Avatar src={business.image} radius="full" size="lg" />
@@ -63,6 +74,8 @@ const BusinessDetails = async ({ params }: BusinessDetailsProps) => {
           </p>
         </CardBody>
       </Card>
+
+      <ClientTable initialData={clients} />
     </div>
   );
 };

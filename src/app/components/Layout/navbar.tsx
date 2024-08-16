@@ -1,5 +1,5 @@
-import { ICONS } from '@app/utils/constants/icons';
-import { navItems, sideBarItems } from '@app/utils/constants/navigationItems';
+import { ICONS } from '@app/base/constants/icons';
+import { navItems, routeTitles, sideBarItems } from '@app/base/constants/navigationItems';
 import {
   Avatar,
   Dropdown,
@@ -7,13 +7,13 @@ import {
   DropdownMenu,
   DropdownTrigger,
   Link,
-  Navbar as NextNavbar,
   NavbarBrand,
   NavbarContent,
   NavbarItem,
   NavbarMenu,
   NavbarMenuItem,
   NavbarMenuToggle,
+  Navbar as NextNavbar,
   Switch,
 } from '@nextui-org/react';
 import classNames from 'classnames';
@@ -27,8 +27,20 @@ const Navbar = () => {
   const router = useRouter();
   const pathname = usePathname();
 
-  const currentNavItem = sideBarItems.find((item) => item.path === pathname);
+  // Adjust matching logic to handle dynamic routes
+  const currentNavItem = routeTitles.find((item) => {
+    // Handle exact match first
+    if (pathname === item.path) return true;
+
+    const dynamicPathPattern = item.path.replace(/:\w+/g, '[^/]+'); // Replace `:id` with a regex pattern
+    const regex = new RegExp(`^${dynamicPathPattern}$`);
+    return regex.test(pathname);
+  });
+
   const currentTitle = currentNavItem ? currentNavItem.title : 'Home';
+
+  console.log('pathhname: ', pathname);
+  console.log(`CurrentNavItem: ${currentNavItem?.path}`);
 
   const { theme, setTheme } = useTheme();
 

@@ -1,6 +1,6 @@
 'use client';
 
-import { statusOptions } from '@app/utils/mocks/clients';
+import { statusOptions } from '@app/base/mocks/clients';
 import {
   SharedSelection,
   SortDescriptor,
@@ -23,6 +23,7 @@ interface GenericTableProps<T extends TableEntity> {
   removeRow: (id: string) => void;
   viewRow: (id: string) => void;
   editRow: (id: string) => void;
+  addNew: () => void;
 }
 
 const GenericTable = <T extends TableEntity>({
@@ -31,6 +32,7 @@ const GenericTable = <T extends TableEntity>({
   removeRow,
   viewRow,
   editRow,
+  addNew,
 }: GenericTableProps<T>): React.JSX.Element => {
   const [rows, setRows] = useState<T[]>(initialRows);
   const [filterValue, setFilterValue] = useState<string>('');
@@ -138,6 +140,7 @@ const GenericTable = <T extends TableEntity>({
             setStatusFilter={setStatusFilter}
             onRowsPerPageChange={onRowsPerPageChange}
             users={rows}
+            onAddNew={addNew}
           />
         }
         topContentPlacement="outside"

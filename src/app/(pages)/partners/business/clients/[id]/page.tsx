@@ -1,5 +1,5 @@
 import { Chip, User } from '@nextui-org/react';
-import { Client, statusColorMap } from '../../types';
+import { Client, statusColorMap } from '../../../types';
 
 interface ClientDetailsProps {
   params: { id: string };
@@ -7,7 +7,7 @@ interface ClientDetailsProps {
 
 async function fetchClient(id: string): Promise<Client | null> {
   try {
-    const response = await fetch(`http://localhost:3001/clients/${id}`, {
+    const response = await fetch(`http://localhost:3002/clients/${id}`, {
       cache: 'no-store',
     });
     if (!response.ok) {

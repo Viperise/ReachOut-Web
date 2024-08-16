@@ -1,6 +1,6 @@
 'use client';
 
-import { sideBarItems } from '@app/utils/constants/navigationItems';
+import { sideBarItems } from '@app/base/constants/navigationItems';
 import { colors } from '@nextui-org/react';
 import classNames from 'classnames';
 import { useTheme } from 'next-themes';

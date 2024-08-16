@@ -1,6 +1,6 @@
 'use client';
 
-import { partnersRoute } from '@app/utils/constants/navigationItems';
+import { routes } from '@app/base/constants/routes';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { Business, Column } from '../types';
@@ -31,7 +31,11 @@ const BusinessTable = ({ initialData }: { initialData: Business[] }) => {
   };
 
   const viewBusiness = (id: string) => {
-    return router.push(`${partnersRoute}/business/${id}`);
+    return router.push(routes.viewBusiness(id));
+  };
+
+  const handleAddNew = async () => {
+    return router.push(routes.addBusiness());
   };
 
   return (
@@ -41,6 +45,7 @@ const BusinessTable = ({ initialData }: { initialData: Business[] }) => {
       removeRow={handleRemoveBusiness}
       viewRow={viewBusiness}
       editRow={() => {}} // Implement edit logic
+      addNew={handleAddNew}
     />
   );
 };

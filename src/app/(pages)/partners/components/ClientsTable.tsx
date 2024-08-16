@@ -1,6 +1,6 @@
 'use client';
 
-import { partnersRoute } from '@app/utils/constants/navigationItems';
+import { routes } from '@app/base/constants/routes';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { Client, Column } from '../types';
@@ -21,7 +21,7 @@ const ClientTable = ({ initialData }: { initialData: Client[] }) => {
   const handleRemoveClient = async (id: string) => {
     setClients(clients.filter((client) => client.id !== id));
     try {
-      await fetch(`http://localhost:3001/clients/${id}`, {
+      await fetch(`http://localhost:3002/clients/${id}`, {
         method: 'DELETE',
       });
     } catch (error) {
@@ -31,7 +31,11 @@ const ClientTable = ({ initialData }: { initialData: Client[] }) => {
   };
 
   const viewClient = (id: string) => {
-    return router.push(`${partnersRoute}/clients/${id}`);
+    return router.push(routes.businessClients(id));
+  };
+
+  const handleAddNew = async () => {
+    return router.push(routes.addClient());
   };
 
   return (
@@ -41,6 +45,7 @@ const ClientTable = ({ initialData }: { initialData: Client[] }) => {
       removeRow={handleRemoveClient}
       viewRow={viewClient}
       editRow={() => {}} // Implement edit logic
+      addNew={handleAddNew}
     />
   );
 };

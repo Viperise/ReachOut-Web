@@ -1,5 +1,5 @@
+import { ICONS } from '@app/base/constants/icons';
 import React from 'react';
-import { ICONS } from '@app/utils/constants/icons';
 
 interface SearchBarProps {
   placeholder?: string;
