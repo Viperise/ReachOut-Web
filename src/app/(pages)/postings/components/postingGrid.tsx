@@ -1,11 +1,10 @@
 'use client';
-
 import { Grid } from '@app/app/components';
-import useAdverts from '@app/app/hook/adverts';
+import usePosting from '@app/app/hook/posting';
 import { Pagination } from '@nextui-org/react';
 
-const AdGrid = () => {
-  const { Items, page, pages, setPage } = useAdverts();
+const PostingGrid = () => {
+  const { Items, page, pages, setPage } = usePosting();
 
   return (
     <div className="flex flex-col gap-20 justify-center w-full">
@@ -31,4 +30,4 @@ const AdGrid = () => {
   );
 };
 
-export default AdGrid;
+export default PostingGrid;

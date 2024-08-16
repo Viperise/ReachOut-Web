@@ -1,9 +1,9 @@
-import AdGrid from './components/adGrid';
+import PostingGrid from './components/postingGrid';
 
 const PostingsPage = () => {
   return (
     <div className="flex p-5 w-full">
-      <AdGrid />
+      <PostingGrid />
     </div>
   );
 };

@@ -1,5 +1,5 @@
-import { AdGrid } from '../types/adGrid';
 import { EstablishmentTable } from '../types/establishmentTable';
+import { PostingGrid } from '../types/postingGrid';
 
 export const Establishment: EstablishmentTable[] = [
   {
@@ -14,7 +14,7 @@ export const Establishment: EstablishmentTable[] = [
   },
 ];
 
-export const Adverts: AdGrid[] = [
+export const Posting: PostingGrid[] = [
   {
     image: 'https://picsum.photos/200/300',
     place: 'Maldives',
