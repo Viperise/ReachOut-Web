@@ -1,6 +1,6 @@
 'use client';
 
-import { partnersRoute } from '@app/utils/constants/navigationItems';
+import { routes } from '@app/base/constants/routes';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { Client, Column } from '../types';
@@ -9,8 +9,6 @@ import GenericTable from './GenericTable';
 const clientColumns: Column[] = [
   { name: 'Nome', uid: 'name', sortable: true },
   { name: 'Status', uid: 'status', sortable: true },
-  { name: 'Função', uid: 'team' },
-  { name: 'Estabelecimento', uid: 'establishment' },
   { name: 'Ações', uid: 'actions' },
 ];
 
@@ -18,10 +16,10 @@ const ClientTable = ({ initialData }: { initialData: Client[] }) => {
   const [clients, setClients] = useState<Client[]>(initialData);
   const router = useRouter();
 
-  const handleRemoveClient = async (id: string) => {
+  const handleRemoveClient = async (id: number) => {
     setClients(clients.filter((client) => client.id !== id));
     try {
-      await fetch(`http://localhost:3001/clients/${id}`, {
+      await fetch(`http://localhost:3002/clients/${id}`, {
         method: 'DELETE',
       });
     } catch (error) {
@@ -30,8 +28,12 @@ const ClientTable = ({ initialData }: { initialData: Client[] }) => {
     }
   };
 
-  const viewClient = (id: string) => {
-    return router.push(`${partnersRoute}/clients/${id}`);
+  const viewClient = (id: number) => {
+    return router.push(routes.businessClients(id));
+  };
+
+  const handleAddNew = async () => {
+    return router.push(routes.addClient());
   };
 
   return (
@@ -41,6 +43,8 @@ const ClientTable = ({ initialData }: { initialData: Client[] }) => {
       removeRow={handleRemoveClient}
       viewRow={viewClient}
       editRow={() => {}} // Implement edit logic
+      addNew={handleAddNew}
+      fetchPage={() => console.log(`fetch client`)}
     />
   );
 };

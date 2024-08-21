@@ -5,7 +5,7 @@ type BusinessStore = {
   rows: Business[];
   setRows: (rows: Business[]) => void;
   addRow: (row: Business) => void;
-  removeRow: (id: string) => void;
+  removeRow: (id: number) => void;
   editRow: (updatedRow: Business) => void;
 };
 

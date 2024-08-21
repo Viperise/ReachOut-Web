@@ -8,32 +8,57 @@ type Column = {
 
 type ClientFormData = Omit<Client, 'id' | 'image'>;
 
+interface Status {
+  id: number;
+  name: string;
+}
+
+interface Establishment {
+  id: number;
+  name: string;
+  location: string;
+}
+
+interface Employee {
+  id: number;
+  name: string;
+}
+
+interface Business {
+  id: number;
+  name: string;
+  description: string;
+  establishments?: Establishment[];
+  employees?: Employee[];
+  status: Status;
+}
+
 type Client = {
-  id: string;
+  id: number;
   image: string;
   name: string;
-  status: string;
-  team: string;
-  establishment: string;
+  status?: Status;
 };
 
-type Business = {
-  id: string;
-  image: string;
-  name: string;
-  status: string;
-  category: string;
-  establishment: string;
-  employeesCount?: number;
-  socialMedia?: string;
-};
+interface PartnerResponse {
+  content: Business[];
+  totalElements: number;
+  totalPages: number;
+  page: number;
+  size: number;
+  empty: boolean;
+  first: boolean;
+  last: boolean;
+}
+
+type BusinessFormData = Omit<Business, 'id' | 'status' | 'establishments' | 'employees'>;
 
 type TableEntity = Client | Business;
 
 export const statusColorMap: Record<string, ChipProps['color']> = {
-  ativo: 'success',
-  pausa: 'danger',
-  ferias: 'warning',
+  Ativo: 'success',
+  Inativo: 'warning',
+  Removido: 'danger',
 };
 
-export type { Business, Client, ClientFormData, Column, TableEntity };
+export type { Business, BusinessFormData, Client, ClientFormData, Column, PartnerResponse, TableEntity };

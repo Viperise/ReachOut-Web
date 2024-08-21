@@ -1,46 +1,54 @@
 'use client';
 
-import { partnersRoute } from '@app/utils/constants/navigationItems';
+import { routes } from '@app/base/constants/routes';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
-import { Business, Column } from '../types';
+import { useEffect, useState } from 'react';
+import { Business, Column, PartnerResponse } from '../types';
 import GenericTable from './GenericTable';
 
 const businessColumns: Column[] = [
   { name: 'Nome', uid: 'name', sortable: true },
   { name: 'Status', uid: 'status', sortable: true },
-  { name: 'Categoria', uid: 'category' },
-  { name: 'Estabelecimento', uid: 'establishment' },
+  { name: 'Estabelecimento', uid: 'establishments' },
+  { name: 'Funcionários', uid: 'employees' },
   { name: 'Ações', uid: 'actions' },
 ];
 
-const BusinessTable = ({ initialData }: { initialData: Business[] }) => {
+const BusinessTable = ({
+  initialData,
+  fetchPage,
+}: {
+  initialData: PartnerResponse;
+  fetchPage: (page: number) => void;
+}) => {
   const router = useRouter();
-  const [businesses, setBusinesses] = useState<Business[]>(initialData);
+  const [data, setData] = useState<PartnerResponse>(initialData);
 
-  const handleRemoveBusiness = async (id: string) => {
-    setBusinesses(businesses.filter((business) => business.id !== id));
-    try {
-      await fetch(`http://localhost:3001/businesses/${id}`, {
-        method: 'DELETE',
-      });
-    } catch (error) {
-      console.error('Failed to remove business:', error);
-      // Optionally handle rollback
-    }
+  useEffect(() => {
+    setData(initialData);
+  }, [initialData]);
+
+  const handleRemoveBusiness = async (id: number) => {
+    console.log(`remove business: ${id}`);
   };
 
-  const viewBusiness = (id: string) => {
-    return router.push(`${partnersRoute}/business/${id}`);
+  const viewBusiness = (id: number) => {
+    return router.push(routes.viewBusiness(id));
+  };
+
+  const handleAddNew = async () => {
+    return router.push(routes.addBusiness());
   };
 
   return (
     <GenericTable<Business>
       columns={businessColumns}
-      initialRows={businesses}
+      initialRows={data.content} // Pass the content as initialRows
       removeRow={handleRemoveBusiness}
       viewRow={viewBusiness}
       editRow={() => {}} // Implement edit logic
+      addNew={handleAddNew}
+      fetchPage={fetchPage} // Pass the fetchPage function to fetch new data
     />
   );
 };

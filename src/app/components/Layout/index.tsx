@@ -1,4 +1,5 @@
 'use client';
+import { routes } from '@app/base/constants/routes';
 import { usePathname } from 'next/navigation';
 import { ReactNode } from 'react';
 import Footer from './footer';
@@ -8,7 +9,7 @@ import Sidebar from './sidebar';
 const Layout = ({ children }: { children: ReactNode }) => {
   const pathname = usePathname();
 
-  if (pathname === '/login') return <>{children}</>;
+  if (pathname === routes.login()) return <>{children}</>;
 
   return (
     <div className="flex flex-col h-screen">

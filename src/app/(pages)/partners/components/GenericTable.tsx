@@ -1,6 +1,5 @@
 'use client';
 
-import { statusOptions } from '@app/utils/mocks/clients';
 import {
   SharedSelection,
   SortDescriptor,
@@ -20,9 +19,11 @@ import TopContent from './TopContent';
 interface GenericTableProps<T extends TableEntity> {
   columns: Column[];
   initialRows: T[];
-  removeRow: (id: string) => void;
-  viewRow: (id: string) => void;
-  editRow: (id: string) => void;
+  removeRow: (id: number) => void;
+  viewRow: (id: number) => void;
+  editRow: (id: number) => void;
+  addNew: () => void;
+  fetchPage: (page: number) => void;
 }
 
 const GenericTable = <T extends TableEntity>({
@@ -31,6 +32,8 @@ const GenericTable = <T extends TableEntity>({
   removeRow,
   viewRow,
   editRow,
+  addNew,
+  fetchPage,
 }: GenericTableProps<T>): React.JSX.Element => {
   const [rows, setRows] = useState<T[]>(initialRows);
   const [filterValue, setFilterValue] = useState<string>('');
@@ -52,43 +55,42 @@ const GenericTable = <T extends TableEntity>({
     if (hasSearchFilter) {
       filteredUsers = filteredUsers.filter((item) => item.name.toLowerCase().includes(filterValue.toLowerCase()));
     }
-    if (statusFilter !== 'all' && Array.from(statusFilter).length !== statusOptions.length) {
-      filteredUsers = filteredUsers.filter((item) => Array.from(statusFilter).includes(item.status));
+    if (statusFilter !== 'all') {
+      filteredUsers = filteredUsers.filter(
+        (item) => item.status && Array.from(statusFilter).includes(item.status.name),
+      );
     }
 
     return filteredUsers;
   }, [rows, filterValue, statusFilter]);
 
-  const pages = Math.ceil(filteredItems.length / rowsPerPage);
-
-  const items = useMemo(() => {
-    const start = (page - 1) * rowsPerPage;
-    const end = start + rowsPerPage;
-
-    return filteredItems.slice(start, end);
-  }, [page, filteredItems, rowsPerPage]);
-
   const sortedItems = useMemo(() => {
-    return [...items].sort((a: T, b: T) => {
+    return [...filteredItems].sort((a: T, b: T) => {
       const first = a[sortDescriptor.column as keyof T] as string | number;
       const second = b[sortDescriptor.column as keyof T] as string | number;
       const cmp = first < second ? -1 : first > second ? 1 : 0;
 
       return sortDescriptor.direction === 'descending' ? -cmp : cmp;
     });
-  }, [sortDescriptor, items]);
+  }, [sortDescriptor, filteredItems]);
 
   const onNextPage = useCallback(() => {
-    if (page < pages) {
-      setPage(page + 1);
-    }
-  }, [page, pages]);
+    setPage((prevPage) => {
+      const nextPage = prevPage + 1;
+      fetchPage(nextPage);
+      return nextPage;
+    });
+  }, [fetchPage]);
 
   const onPreviousPage = useCallback(() => {
-    if (page > 1) {
-      setPage(page - 1);
-    }
-  }, [page]);
+    setPage((prevPage) => {
+      const previousPage = prevPage - 1;
+      if (previousPage > 0) {
+        fetchPage(previousPage);
+      }
+      return previousPage;
+    });
+  }, [fetchPage]);
 
   const onRowsPerPageChange = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
     setRowsPerPage(Number(e.target.value));
@@ -110,18 +112,18 @@ const GenericTable = <T extends TableEntity>({
   }, []);
 
   const handleRemoveRow = useCallback(
-    (id: string) => {
+    (id: number) => {
       removeRow(id);
       setRows((prevRows) => prevRows.filter((row) => row.id !== id));
     },
     [removeRow],
   );
 
-  const handleViewDetails = (id: string) => {
+  const handleViewDetails = (id: number) => {
     viewRow(id);
   };
 
-  const handleEditDetails = (id: string) => {
+  const handleEditDetails = (id: number) => {
     editRow(id);
   };
 
@@ -134,10 +136,11 @@ const GenericTable = <T extends TableEntity>({
             statusFilter={statusFilter}
             onSearchChange={onSearchChange}
             onClear={onClear}
-            statusOptions={statusOptions}
+            statusOptions={[]}
             setStatusFilter={setStatusFilter}
             onRowsPerPageChange={onRowsPerPageChange}
-            users={rows}
+            partners={rows}
+            onAddNew={addNew}
           />
         }
         topContentPlacement="outside"
@@ -146,14 +149,14 @@ const GenericTable = <T extends TableEntity>({
             selectedKeys={selectedKeys}
             filteredItems={filteredItems}
             page={page}
-            pages={pages}
+            pages={Math.ceil(rows.length / rowsPerPage)}
             setPage={setPage}
             onPreviousPage={onPreviousPage}
             onNextPage={onNextPage}
           />
         }
         bottomContentPlacement="outside"
-        selectionMode="multiple"
+        selectionMode="none"
         color="default"
         aria-label="Entities table"
         className="w-full"

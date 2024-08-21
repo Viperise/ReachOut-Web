@@ -1,6 +1,6 @@
 import useEstablishment from '@app/app/hook/establishments';
+import { ICONS } from '@app/base/constants/icons';
 import { Establishment } from '@app/base/mock';
-import { ICONS } from '@app/utils/constants/icons';
 import { Pagination, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from '@nextui-org/react';
 import Image from 'next/image';
 import Link from 'next/link';
