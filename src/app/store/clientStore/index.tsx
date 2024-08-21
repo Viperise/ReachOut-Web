@@ -5,7 +5,7 @@ type ClientStore = {
   rows: Client[];
   setRows: (rows: Client[]) => void;
   addRow: (row: Client) => void;
-  removeRow: (id: string) => void;
+  removeRow: (id: number) => void;
   editRow: (updatedRow: Client) => void;
 };
 

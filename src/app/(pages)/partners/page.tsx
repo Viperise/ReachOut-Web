@@ -1,9 +1,8 @@
 'use client';
 
-import { Tab, Tabs } from '@nextui-org/react';
+import { useEffect, useState } from 'react';
 import BusinessTable from './components/BusinessTable';
-import ClientTable from './components/ClientsTable';
-import { Business, Client } from './types';
+import { PartnerResponse } from './types';
 
 async function fetchData(url: string) {
   const res = await fetch(url, { cache: 'no-store' });
@@ -13,21 +12,32 @@ async function fetchData(url: string) {
   return res.json();
 }
 
-export default async function Page() {
-  const clients: Client[] = await fetchData('http://localhost:3001/clients');
-  const businesses: Business[] = await fetchData('http://localhost:3001/businesses');
+const apiUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+
+export default function Page() {
+  const [businesses, setBusinesses] = useState<PartnerResponse | null>(null);
+  const [currentPage, setCurrentPage] = useState(0);
+
+  const loadBusinesses = async (page: number) => {
+    try {
+      const data: PartnerResponse = await fetchData(`${apiUrl}/company?page=${page}`);
+      setBusinesses(data);
+    } catch (error) {
+      console.error('Failed to fetch businesses:', error);
+    }
+  };
+
+  useEffect(() => {
+    loadBusinesses(currentPage);
+  }, [currentPage]);
+
+  const handleFetchPage = (page: number) => {
+    setCurrentPage(page);
+  };
 
   return (
     <div className="flex flex-col gap-4 p-4">
-      <Tabs aria-label="Options">
-        <Tab key="business" title="Empresas">
-          <BusinessTable initialData={businesses} />
-        </Tab>
-
-        <Tab key="clients" title="Clientes">
-          <ClientTable initialData={clients} />
-        </Tab>
-      </Tabs>
+      {businesses ? <BusinessTable initialData={businesses} fetchPage={handleFetchPage} /> : <p>Loading...</p>}
     </div>
   );
 }

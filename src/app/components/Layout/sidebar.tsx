@@ -1,6 +1,6 @@
 'use client';
 
-import { sideBarItems } from '@app/utils/constants/navigationItems';
+import { sideBarItems } from '@app/base/constants/navigationItems';
 import { colors } from '@nextui-org/react';
 import classNames from 'classnames';
 import { useTheme } from 'next-themes';
@@ -20,7 +20,7 @@ const Sidebar = () => {
       </div>
       <nav className="flex flex-col gap-4">
         {sideBarItems.map(({ title, path, icon: Icon }) => {
-          const isActive = pathname === path;
+          const isActive = path === '/' ? pathname === '/' : pathname.startsWith(path);
           const activeClasses =
             'border-l-5 border-l-primary-600 dark:border-l-primary-200 text-primary-600 dark:text-primary-200';
           const hoverClasses = 'hover:opacity-70 transition-opacity duration-100';

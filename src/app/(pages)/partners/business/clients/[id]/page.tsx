@@ -1,5 +1,5 @@
 import { Chip, User } from '@nextui-org/react';
-import { Client, statusColorMap } from '../../types';
+import { Client, statusColorMap } from '../../../types';
 
 interface ClientDetailsProps {
   params: { id: string };
@@ -7,7 +7,7 @@ interface ClientDetailsProps {
 
 async function fetchClient(id: string): Promise<Client | null> {
   try {
-    const response = await fetch(`http://localhost:3001/clients/${id}`, {
+    const response = await fetch(`http://localhost:3002/clients/${id}`, {
       cache: 'no-store',
     });
     if (!response.ok) {
@@ -32,12 +32,14 @@ const ClientDetails = async ({ params }: ClientDetailsProps) => {
     <div className="flex flex-col items-center p-4">
       <User avatarProps={{ radius: 'lg', src: client.image }} name={client.name} />
       <p>Nome: {client.name}</p>
-      <p>Função: {client.team}</p>
-      Status:
-      <Chip color={statusColorMap[client.status]} className="capitalize">
-        {client.status}
-      </Chip>
-      <p>Estabelecimento: {client.establishment}</p>
+      {client.status && (
+        <>
+          <p>Status:</p>
+          <Chip color={statusColorMap[client.status.name]} className="capitalize">
+            {client.status.name}
+          </Chip>
+        </>
+      )}
     </div>
   );
 };

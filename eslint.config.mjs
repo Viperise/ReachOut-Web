@@ -1,7 +1,7 @@
 import pluginJs from '@eslint/js';
 import tseslint from '@typescript-eslint/eslint-plugin';
 import parser from '@typescript-eslint/parser';
-import prettierPlugin from 'eslint-plugin-prettier'; // Import Prettier plugin
+import prettierPlugin from 'eslint-plugin-prettier';
 import pluginReact from 'eslint-plugin-react';
 import globals from 'globals';
 
@@ -10,7 +10,11 @@ export default [
     files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
     languageOptions: {
       parser: parser,
-      globals: globals.browser,
+      globals: {
+        React: 'readonly',
+        ...globals.browser,
+        ...globals.node,
+      },
       ecmaVersion: 'latest',
       sourceType: 'module',
     },
@@ -29,6 +33,8 @@ export default [
       ...tseslint.configs.recommended.rules,
       ...pluginReact.configs.recommended.rules,
       'react/react-in-jsx-scope': 'off',
+      'react/jsx-uses-react': 'off',
+      'no-undef': 'off',
       'prettier/prettier': 'error',
     },
   },

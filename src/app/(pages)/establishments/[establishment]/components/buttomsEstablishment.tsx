@@ -1,4 +1,4 @@
-import { ICONS } from '@app/utils/constants/icons';
+import { ICONS } from '@app/base/constants/icons';
 
 const ButtomsEstablishment = () => {
   return (

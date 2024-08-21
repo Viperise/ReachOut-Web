@@ -1,4 +1,4 @@
-import { ICONS } from '@app/utils/constants/icons';
+import { ICONS } from '@app/base/constants/icons';
 import {
   Button,
   Dropdown,
@@ -24,7 +24,8 @@ interface TopContentProps {
   statusOptions: StatusOption[];
   setStatusFilter: (keys: SharedSelection) => void;
   onRowsPerPageChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
-  users: Array<TableEntity>;
+  partners: Array<TableEntity>;
+  onAddNew: () => void;
 }
 const TopContent: React.FC<TopContentProps> = ({
   filterValue,
@@ -34,7 +35,8 @@ const TopContent: React.FC<TopContentProps> = ({
   statusOptions,
   setStatusFilter,
   onRowsPerPageChange,
-  users,
+  partners,
+  onAddNew,
 }) => {
   return (
     <div className="flex flex-col gap-4">
@@ -70,13 +72,13 @@ const TopContent: React.FC<TopContentProps> = ({
               ))}
             </DropdownMenu>
           </Dropdown>
-          <Button color="primary" endContent={<ICONS.plus />}>
+          <Button color="primary" endContent={<ICONS.plus />} onClick={onAddNew}>
             Adicionar Novo
           </Button>
         </div>
       </div>
       <div className="flex justify-between items-center">
-        <span className="text-default-400 text-small">{users.length} clientes totais</span>
+        <span className="text-default-400 text-small">{partners.length} clientes totais</span>
         <label className="flex items-center text-default-400 text-small">
           Linhas por página:
           <select className="bg-transparent outline-none text-default-400 text-small" onChange={onRowsPerPageChange}>
