@@ -16,7 +16,7 @@ import {
 import { HiFilter } from 'react-icons/hi';
 import { IoMdMoon, IoMdSunny } from 'react-icons/io';
 import { IoEllipsisVerticalSharp } from 'react-icons/io5';
-import { MdOutlinePlace } from 'react-icons/md';
+import { MdOutlinePlace, MdEdit } from 'react-icons/md';
 
 export const ICONS = {
   home: FaHome,
@@ -37,4 +37,5 @@ export const ICONS = {
   plus: FaPlus,
   place: MdOutlinePlace,
   star: FaStar,
+  editButton: MdEdit,
 };
