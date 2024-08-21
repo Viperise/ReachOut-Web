@@ -27,20 +27,19 @@ const Navbar = () => {
   const router = useRouter();
   const pathname = usePathname();
 
-  // Adjust matching logic to handle dynamic routes
   const currentNavItem = routeTitles.find((item) => {
-    // Handle exact match first
-    if (pathname === item.path) return true;
+    if (typeof item.path === 'string' && pathname === item.path) return true;
 
-    const dynamicPathPattern = item.path.replace(/:\w+/g, '[^/]+'); // Replace `:id` with a regex pattern
-    const regex = new RegExp(`^${dynamicPathPattern}$`);
-    return regex.test(pathname);
+    if (typeof item.path === 'function') {
+      const dynamicPathPattern = item.path(123).replace(/\/\d+$/, '');
+
+      const regex = new RegExp(`^${dynamicPathPattern}/\\d+$`);
+      return regex.test(pathname);
+    }
+
+    return false;
   });
-
   const currentTitle = currentNavItem ? currentNavItem.title : 'Home';
-
-  console.log('pathhname: ', pathname);
-  console.log(`CurrentNavItem: ${currentNavItem?.path}`);
 
   const { theme, setTheme } = useTheme();
 

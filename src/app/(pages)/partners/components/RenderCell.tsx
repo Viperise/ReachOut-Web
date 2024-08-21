@@ -4,52 +4,48 @@ import React from 'react';
 import { Business, TableEntity, statusColorMap } from '../types';
 
 const isBusiness = (entity: TableEntity): entity is Business => {
-  return (entity as Business).employeesCount !== undefined;
+  return (entity as Business).employees?.length !== undefined;
 };
 
 const renderCell = (
   entity: TableEntity,
   columnKey: React.Key,
-  removeRow: (id: string) => void,
-  viewDetails: (id: string) => void,
-  editDetails: (id: string) => void,
+  removeRow: (id: number) => void,
+  viewDetails: (id: number) => void,
+  editDetails: (id: number) => void,
 ): React.ReactNode => {
-  const cellValue = entity[columnKey as keyof TableEntity];
-
   switch (columnKey) {
     case 'name':
       return (
-        <User avatarProps={{ radius: 'lg', src: entity.image }} name={cellValue as string}>
+        <User avatarProps={{ radius: 'lg', src: 'https://picsum.photos/200' }} name={entity.name}>
           {entity.name}
         </User>
       );
-    case 'team': // For Client
-    case 'category': // For Business
-      return (
+    case 'category':
+      return isBusiness(entity) ? (
         <div className="flex flex-col">
-          <p className="text-sm capitalize text-bold">{cellValue}</p>
-          <p className="text-sm capitalize text-bold text-default-400">
-            {'team' in entity ? entity.team : entity.category}
-          </p>
+          <p className="text-sm capitalize font-bold">{entity.description}</p>
+          <p className="text-sm capitalize font-bold text-default-400">{entity.name}</p>
         </div>
-      );
+      ) : null;
     case 'status':
-      return (
-        <Chip className="capitalize" color={statusColorMap[entity.status]} size="sm" variant="flat">
-          {cellValue}
+      return entity.status ? (
+        <Chip className="capitalize" color={statusColorMap[entity.status.name]} size="sm" variant="flat">
+          {entity.status.name}
         </Chip>
-      );
-    case 'establishment':
-      return (
+      ) : null;
+    case 'establishments':
+      return isBusiness(entity) ? (
         <div className="flex flex-col">
-          <p className="text-sm capitalize text-bold">{cellValue}</p>
-          {isBusiness(entity) && (
-            <p className="text-sm capitalize text-bold text-default-400">{`${entity.employeesCount} funcionários`}</p>
-          )}
+          <p className="text-sm capitalize font-bold text-default-400">{`${entity.establishments?.length} estabelecimentos`}</p>
         </div>
-      );
-    case 'employeesCount':
-      return isBusiness(entity) ? <span>{entity.employeesCount}</span> : null;
+      ) : null;
+    case 'employees':
+      return isBusiness(entity) ? (
+        <div className="flex flex-col">
+          <p className="text-sm capitalize font-bold text-default-400">{`${entity.employees?.length} funcionários`}</p>
+        </div>
+      ) : null;
     case 'actions':
       return (
         <div className="relative flex items-center gap-2">
@@ -77,7 +73,7 @@ const renderCell = (
         </div>
       );
     default:
-      return <span>{cellValue}</span>;
+      return <span>{entity.name}</span>;
   }
 };
 

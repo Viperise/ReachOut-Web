@@ -1,7 +1,8 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import BusinessTable from './components/BusinessTable';
-import { Business } from './types';
+import { PartnerResponse } from './types';
 
 async function fetchData(url: string) {
   const res = await fetch(url, { cache: 'no-store' });
@@ -11,12 +12,32 @@ async function fetchData(url: string) {
   return res.json();
 }
 
-export default async function Page() {
-  const businesses: Business[] = await fetchData('http://localhost:3002/businesses');
+const apiUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+
+export default function Page() {
+  const [businesses, setBusinesses] = useState<PartnerResponse | null>(null);
+  const [currentPage, setCurrentPage] = useState(0);
+
+  const loadBusinesses = async (page: number) => {
+    try {
+      const data: PartnerResponse = await fetchData(`${apiUrl}/company?page=${page}`);
+      setBusinesses(data);
+    } catch (error) {
+      console.error('Failed to fetch businesses:', error);
+    }
+  };
+
+  useEffect(() => {
+    loadBusinesses(currentPage);
+  }, [currentPage]);
+
+  const handleFetchPage = (page: number) => {
+    setCurrentPage(page);
+  };
 
   return (
     <div className="flex flex-col gap-4 p-4">
-      <BusinessTable initialData={businesses} />
+      {businesses ? <BusinessTable initialData={businesses} fetchPage={handleFetchPage} /> : <p>Loading...</p>}
     </div>
   );
 }

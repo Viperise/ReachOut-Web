@@ -32,12 +32,14 @@ const ClientDetails = async ({ params }: ClientDetailsProps) => {
     <div className="flex flex-col items-center p-4">
       <User avatarProps={{ radius: 'lg', src: client.image }} name={client.name} />
       <p>Nome: {client.name}</p>
-      <p>Função: {client.team}</p>
-      Status:
-      <Chip color={statusColorMap[client.status]} className="capitalize">
-        {client.status}
-      </Chip>
-      <p>Estabelecimento: {client.establishment}</p>
+      {client.status && (
+        <>
+          <p>Status:</p>
+          <Chip color={statusColorMap[client.status.name]} className="capitalize">
+            {client.status.name}
+          </Chip>
+        </>
+      )}
     </div>
   );
 };
