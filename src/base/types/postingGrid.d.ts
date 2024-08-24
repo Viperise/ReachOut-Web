@@ -1,6 +1,7 @@
 export interface PostingGrid {
-  id: number;
+  id: string;
   image: string;
   place: string;
   name: string;
+  tags: string[];
 }

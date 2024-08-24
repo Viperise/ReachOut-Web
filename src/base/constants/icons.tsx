@@ -15,7 +15,7 @@ import {
 } from 'react-icons/fa';
 import { HiFilter } from 'react-icons/hi';
 import { IoMdMoon, IoMdSunny } from 'react-icons/io';
-import { IoEllipsisVerticalSharp } from 'react-icons/io5';
+import { IoEllipsisVerticalSharp, IoCloseCircle } from 'react-icons/io5';
 import { MdOutlinePlace, MdEdit } from 'react-icons/md';
 
 export const ICONS = {
@@ -38,4 +38,5 @@ export const ICONS = {
   place: MdOutlinePlace,
   star: FaStar,
   editButton: MdEdit,
+  close: IoCloseCircle,
 };
