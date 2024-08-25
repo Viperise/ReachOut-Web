@@ -1,4 +1,4 @@
-import useEstablishment from '@app/app/hook/establishments';
+import useEstablishment from '@app/app/hooks/establishments';
 import { ICONS } from '@app/base/constants/icons';
 import { Establishment } from '@app/base/mock';
 import { Pagination, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from '@nextui-org/react';

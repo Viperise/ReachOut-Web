@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-const Leftside = () => {
+const Logo = () => {
   return (
     <div className="flex flex-col gap-6">
       <div className="flex justify-center items-center">
@@ -20,4 +20,4 @@ const Leftside = () => {
   );
 };
 
-export default Leftside;
+export default Logo;

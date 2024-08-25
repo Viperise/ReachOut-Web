@@ -158,7 +158,7 @@ const GenericTable = <T extends TableEntity>({
         bottomContentPlacement="outside"
         selectionMode="none"
         color="default"
-        aria-label="Entities table"
+        aria-label="Tabela de empresas"
         className="w-full"
         selectedKeys={selectedKeys}
         sortDescriptor={sortDescriptor}
@@ -176,7 +176,7 @@ const GenericTable = <T extends TableEntity>({
             </TableColumn>
           )}
         </TableHeader>
-        <TableBody emptyContent={'No data available'} items={sortedItems}>
+        <TableBody emptyContent={'Sem dados disponíveis'} items={sortedItems}>
           {(item) => (
             <TableRow key={item.id}>
               {(columnKey) => (

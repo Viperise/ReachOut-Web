@@ -1,3 +1,4 @@
+import { useAuth } from '@app/app/contexts/AuthContext';
 import { ICONS } from '@app/base/constants/icons';
 import { navItems, routeTitles, sideBarItems } from '@app/base/constants/navigationItems';
 import {
@@ -18,14 +19,17 @@ import {
 } from '@nextui-org/react';
 import classNames from 'classnames';
 import { useTheme } from 'next-themes';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const router = useRouter();
+  const { logout } = useAuth();
   const pathname = usePathname();
+
+  const onLogout = async () => {
+    await logout();
+  };
 
   const currentNavItem = routeTitles.find((item) => {
     if (typeof item.path === 'string' && pathname === item.path) return true;
@@ -75,12 +79,12 @@ const Navbar = () => {
               <Avatar src="https://picsum.photos/200" className="cursor-pointer" size="md" />
             </DropdownTrigger>
             <DropdownMenu aria-label="Dynamic Actions">
-              {navItems.map(({ key, label, path }) => (
+              {navItems.map(({ key, label }) => (
                 <DropdownItem
                   key={key}
                   color={key === 'logout' ? 'danger' : 'default'}
                   className={classNames({ 'text-danger': key === 'logout' })}
-                  onClick={() => router.push(path)}
+                  onClick={() => onLogout()}
                 >
                   {label}
                 </DropdownItem>

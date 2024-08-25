@@ -2,7 +2,7 @@
 
 import { ICONS } from '@app/base/constants/icons';
 import { routes } from '@app/base/constants/routes';
-import { Button, Card, CardBody, CardHeader, Chip } from '@nextui-org/react';
+import { Button, Card, CardBody, CardHeader, Chip, Link, Spinner } from '@nextui-org/react';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import ClientTable from '../../components/ClientsTable';
@@ -57,9 +57,22 @@ const BusinessDetails = ({ params }: BusinessDetailsProps) => {
     setLoading(false);
   }, [params.id]);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading)
+    return (
+      <div className="flex h-full items-center justify-center">
+        <Spinner>Carregando...</Spinner>
+      </div>
+    );
   if (error) return <p>{error}</p>;
-  if (!business) return <p>Business not found</p>;
+  if (!business)
+    return (
+      <div className="flex h-full items-center justify-center">
+        <p>Empresa não encontrada</p>
+        <Button>
+          <Link href={'/partners'}>Voltar para empresas</Link>
+        </Button>
+      </div>
+    );
 
   return (
     <div className="flex flex-col px-12 py-4 gap-10">

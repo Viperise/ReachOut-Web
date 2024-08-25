@@ -1,5 +1,6 @@
 'use client';
 
+import { Spinner } from '@nextui-org/react';
 import { useEffect, useState } from 'react';
 import BusinessTable from './components/BusinessTable';
 import { PartnerResponse } from './types';
@@ -36,8 +37,14 @@ export default function Page() {
   };
 
   return (
-    <div className="flex flex-col gap-4 p-4">
-      {businesses ? <BusinessTable initialData={businesses} fetchPage={handleFetchPage} /> : <p>Loading...</p>}
+    <div className="flex flex-col gap-4 p-4 h-full">
+      {businesses ? (
+        <BusinessTable initialData={businesses} fetchPage={handleFetchPage} />
+      ) : (
+        <div className="flex justify-center items-center h-full">
+          <Spinner>Carregando...</Spinner>
+        </div>
+      )}
     </div>
   );
 }
