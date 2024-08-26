@@ -5,8 +5,7 @@ export const Establishment: EstablishmentTable[] = [
   {
     id: '1',
     img: 'https://picsum.photos/200/300',
-    imgOwner:
-      'https://media.discordapp.net/attachments/1126326046279606353/1268638522500452432/Image.png?ex=66cad0f1&is=66c97f71&hm=7730542ade9f3307d07ad725bc476d31748ddec83e7b187b624d8faf6a0e433b&=&format=webp&quality=lossless',
+    imgOwner: 'https://picsum.photos/200/300',
     firstName: 'Restaurante Faustino',
     lastName: 'Restaurante Italiano',
     cnpj: '23.534.954-43/002',
