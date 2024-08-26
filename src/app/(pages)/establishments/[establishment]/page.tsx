@@ -1,7 +1,8 @@
 'use client';
 import InfoEstablishment from './components/inforEstablishment';
 import ImageEstablishment from './components/imageEstablishment';
-import ButtomsEstablishment from './components/buttomsEstablishment';
+import { Button } from '@nextui-org/react';
+import { ICONS } from '@app/base/constants/icons';
 
 const Establishment = () => {
   return (
@@ -11,8 +12,13 @@ const Establishment = () => {
           <ImageEstablishment />
           <InfoEstablishment />
         </div>
-        <div>
-          <ButtomsEstablishment />
+        <div className="flex gap-8">
+          <Button color="secondary" endContent={<ICONS.editButton />} variant="bordered" className="px-10">
+            Editar
+          </Button>
+          <Button color="secondary" className="px-10">
+            Ver catálogo
+          </Button>
         </div>
       </div>
     </div>

@@ -2,7 +2,7 @@ import useEstablishment from '@app/app/hook/establishments';
 import { ICONS } from '@app/base/constants/icons';
 import { Establishment } from '@app/base/mock';
 import { Pagination, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from '@nextui-org/react';
-import Image from 'next/image';
+import { Image } from '@nextui-org/react';
 import Link from 'next/link';
 
 const TableEstablishment = () => {
@@ -45,7 +45,7 @@ const TableEstablishment = () => {
           {Items.map((item) => (
             <TableRow key={item.id}>
               <TableCell className="flex justify-center">
-                <Image src={item.img} alt={'imagem'} width={200} height={200}></Image>
+                <Image src={item.img} alt={'imagem'} width={200}></Image>
               </TableCell>
               <TableCell>
                 <p>{item.firstName}</p>

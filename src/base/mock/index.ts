@@ -5,7 +5,7 @@ export const Establishment: EstablishmentTable[] = [
   {
     id: '1',
     img: 'https://picsum.photos/200/300',
-    imgOwner: 'AAAAAAAAAA',
+    imgOwner: 'https://picsum.photos/200/300',
     firstName: 'Restaurante Faustino',
     lastName: 'Restaurante Italiano',
     cnpj: '23.534.954-43/002',
@@ -22,15 +22,17 @@ export const Establishment: EstablishmentTable[] = [
 
 export const Posting: PostingGrid[] = [
   {
-    id: 1,
+    id: '1',
     image: 'https://picsum.photos/200/300',
     place: 'Maldives',
     name: 'South Beach',
+    tags: ['Beto Sushi', 'Kevin Souza'],
   },
   {
-    id: 2,
+    id: '2',
     image: 'https://picsum.photos/200/300',
     place: 'Maldives',
     name: 'South Beach',
+    tags: ['Beto Sushi', 'Kevin Souza'],
   },
 ];
