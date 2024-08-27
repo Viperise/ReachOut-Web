@@ -3,15 +3,6 @@ import { NextRequest, NextResponse } from 'next/server';
 interface CompanyData {
   name: string;
   description: string;
-  document_number: string;
-  email: string;
-  activity: string;
-  phone: {
-    number: string;
-    isCallable: boolean;
-    isWhatsapp: boolean;
-    isTelegram: boolean;
-  };
 }
 
 export async function POST(req: NextRequest) {

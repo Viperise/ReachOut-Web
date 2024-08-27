@@ -1,13 +1,10 @@
 'use client';
 
 import { showToast } from '@app/base/helpers/toastHelper';
+import { companySchema, CompanySchema } from '@app/base/schemas/companySchema';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { Button, Card, Input, Textarea } from '@nextui-org/react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-
-type FormValues = {
-  name: string;
-  description: string;
-};
 
 export default function AddBusinessForm() {
   const {
@@ -15,13 +12,13 @@ export default function AddBusinessForm() {
     handleSubmit,
     formState: { errors, isSubmitting },
     reset,
-  } = useForm<FormValues>();
+  } = useForm<CompanySchema>({
+    resolver: zodResolver(companySchema),
+  });
 
-  const apiUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
-
-  const onSubmit: SubmitHandler<FormValues> = async (data) => {
+  const onSubmit: SubmitHandler<CompanySchema> = async (data) => {
     try {
-      const res = await fetch(`${apiUrl}/company`, {
+      const res = await fetch('/api/company', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -52,7 +49,7 @@ export default function AddBusinessForm() {
             type="text"
             label="Nome da empresa"
             placeholder="Adicione o nome da empresa"
-            {...register('name', { required: 'Um nome de empresa é necessário' })}
+            {...register('name')}
             isInvalid={errors.name !== undefined}
             errorMessage={errors.name?.message}
           />
@@ -61,7 +58,7 @@ export default function AddBusinessForm() {
           <Textarea
             label="Descrição"
             placeholder="Adicione uma descrição breve a empresa..."
-            {...register('description', { required: 'Uma descrição é necessária' })}
+            {...register('description')}
             isInvalid={errors.description !== undefined}
             errorMessage={errors.description?.message}
           />

@@ -51,8 +51,6 @@ interface PartnerResponse {
   last: boolean;
 }
 
-type BusinessFormData = Omit<Business, 'id' | 'status' | 'establishments' | 'employees'>;
-
 type TableEntity = Client | Business;
 
 export const statusColorMap: Record<string, ChipProps['color']> = {
@@ -61,4 +59,4 @@ export const statusColorMap: Record<string, ChipProps['color']> = {
   Removido: 'danger',
 };
 
-export type { Business, BusinessFormData, Client, ClientFormData, Column, PartnerResponse, TableEntity };
+export type { Business, Client, ClientFormData, Column, PartnerResponse, TableEntity };
