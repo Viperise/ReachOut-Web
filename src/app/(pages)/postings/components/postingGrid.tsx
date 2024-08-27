@@ -1,6 +1,6 @@
 'use client';
-import { Grid } from '@app/app/components';
-import usePosting from '@app/app/hooks/posting';
+import { Grid } from '@/app/components';
+import usePosting from '@/app/hooks/posting';
 import { Pagination } from '@nextui-org/react';
 import Link from 'next/link';
 

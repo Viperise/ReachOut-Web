@@ -1,5 +1,5 @@
 'use client';
-import { routes } from '@app/base/constants/routes';
+import { routes } from '@/base/constants/routes';
 import { usePathname } from 'next/navigation';
 import { ReactNode } from 'react';
 import Footer from './footer';

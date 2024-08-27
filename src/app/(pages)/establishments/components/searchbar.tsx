@@ -1,4 +1,4 @@
-import { ICONS } from '@app/base/constants/icons';
+import { ICONS } from '@/base/constants/icons';
 import React from 'react';
 
 interface SearchBarProps {

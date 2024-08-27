@@ -1,4 +1,4 @@
-import { ICONS } from '@app/base/constants/icons';
+import { ICONS } from '@/base/constants/icons';
 import { Chip, Tooltip, User } from '@nextui-org/react';
 import React from 'react';
 import { Business, TableEntity, statusColorMap } from '../types';

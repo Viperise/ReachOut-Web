@@ -1,4 +1,4 @@
-import { Client } from '@app/app/(pages)/partners/types';
+import { Client } from '@/app/(pages)/partners/types';
 import { create } from 'zustand';
 
 type ClientStore = {

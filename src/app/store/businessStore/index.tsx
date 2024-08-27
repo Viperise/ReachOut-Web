@@ -1,4 +1,4 @@
-import { Business } from '@app/app/(pages)/partners/types';
+import { Business } from '@/app/(pages)/partners/types';
 import { create } from 'zustand';
 
 type BusinessStore = {

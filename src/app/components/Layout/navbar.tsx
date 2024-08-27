@@ -1,6 +1,6 @@
-import { useAuth } from '@app/app/contexts/AuthContext';
-import { ICONS } from '@app/base/constants/icons';
-import { navItems, routeTitles, sideBarItems } from '@app/base/constants/navigationItems';
+import { useAuth } from '@/app/contexts/AuthContext';
+import { ICONS } from '@/base/constants/icons';
+import { navItems, routeTitles, sideBarItems } from '@/base/constants/navigationItems';
 import {
   Avatar,
   Dropdown,

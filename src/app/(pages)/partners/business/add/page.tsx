@@ -1,7 +1,7 @@
 'use client';
 
-import { showToast } from '@app/base/helpers/toastHelper';
-import { companySchema, CompanySchema } from '@app/base/schemas/companySchema';
+import { showToast } from '@/base/helpers/toastHelper';
+import { companySchema, CompanySchema } from '@/base/schemas/companySchema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Button, Card, Input, Textarea } from '@nextui-org/react';
 import { SubmitHandler, useForm } from 'react-hook-form';

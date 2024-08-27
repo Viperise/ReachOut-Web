@@ -1,7 +1,7 @@
 'use client';
 
-import { ICONS } from '@app/base/constants/icons';
-import { routes } from '@app/base/constants/routes';
+import { ICONS } from '@/base/constants/icons';
+import { routes } from '@/base/constants/routes';
 import { Button, Card, CardBody, CardHeader, Chip, Link, Spinner } from '@nextui-org/react';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';

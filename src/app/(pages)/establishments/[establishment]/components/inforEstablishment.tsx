@@ -1,4 +1,4 @@
-import { Establishment } from '@app/base/mock';
+import { Establishment } from '@/base/mock';
 import { useParams } from 'next/navigation';
 
 const InfoEstablishment = () => {

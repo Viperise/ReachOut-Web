@@ -1,4 +1,4 @@
-import { Establishment } from '@app/base/mock';
+import { Establishment } from '@/base/mock';
 import React from 'react';
 
 const useEstablishment = () => {

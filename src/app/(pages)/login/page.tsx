@@ -1,6 +1,6 @@
 'use client';
 
-import { useAuth } from '@app/app/contexts/AuthContext';
+import { useAuth } from '@/app/contexts/AuthContext';
 import { Button, Card, CardBody, Input, Link, Tab, Tabs } from '@nextui-org/react';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';

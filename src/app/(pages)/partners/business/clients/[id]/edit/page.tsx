@@ -1,9 +1,9 @@
 'use client';
 
-import { ClientFormData } from '@app/app/(pages)/partners/types';
-import { Breadcrumbs } from '@app/app/components';
-import { useClientStore } from '@app/app/store/clientStore';
-import { routes } from '@app/base/constants/routes';
+import { ClientFormData } from '@/app/(pages)/partners/types';
+import { Breadcrumbs } from '@/app/components';
+import { useClientStore } from '@/app/store/clientStore';
+import { routes } from '@/base/constants/routes';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Button, Input } from '@nextui-org/react';
 import router from 'next/router';

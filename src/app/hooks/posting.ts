@@ -1,4 +1,4 @@
-import { Posting } from '@app/base/mock';
+import { Posting } from '@/base/mock';
 import React from 'react';
 
 const usePosting = () => {

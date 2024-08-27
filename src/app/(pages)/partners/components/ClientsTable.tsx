@@ -1,6 +1,6 @@
 'use client';
 
-import { routes } from '@app/base/constants/routes';
+import { routes } from '@/base/constants/routes';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { Client, Column } from '../types';
