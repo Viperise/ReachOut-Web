@@ -1,5 +1,6 @@
 import { EstablishmentTable } from '../types/establishmentTable';
 import { PostingGrid } from '../types/postingGrid';
+import { Rating } from '../types/rating';
 
 export const Establishment: EstablishmentTable[] = [
   {
@@ -35,4 +36,10 @@ export const Posting: PostingGrid[] = [
     name: 'South Beach',
     tags: ['Beto Sushi', 'Kevin Souza'],
   },
+];
+
+export const Review: Rating[] = [
+  { title: 'Avaliação', establishmentName: 'Nome do estabelecimento', feedback: 'Mensagem de feedback' },
+  { title: 'Avaliação', establishmentName: 'Nome do estabelecimento', feedback: 'Mensagem de feedback' },
+  { title: 'Avaliação', establishmentName: 'Nome do estabelecimento', feedback: 'Mensagem de feedback' },
 ];
